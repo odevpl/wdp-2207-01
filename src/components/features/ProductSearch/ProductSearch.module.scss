@@ -27,11 +27,16 @@
 
     select {
       -webkit-appearance: none;
+      font-size: 14px;
       border: 0;
       background-color: transparent;
       padding: 5px 30px 5px 35px;
       position: relative;
       z-index: 1;
+      outline: none;
+      &:hover {
+        cursor:pointer;
+      }
     }
   }
 
