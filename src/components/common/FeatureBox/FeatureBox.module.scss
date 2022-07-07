@@ -1,7 +1,7 @@
 @import "../../../styles/settings.scss";
 
 .root {
-  border: 1px solid #b6b6b6;
+  border: 1px solid $product-border-color;
   text-align: center;
   margin-top: 40px;
 
@@ -20,7 +20,7 @@
 
     &::before {
       content: "";
-      border: 1px solid #b6b6b6;
+      border: 1px solid $product-border-color;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -28,7 +28,7 @@
       width: 76px;
       height: 76px;
       border-radius: 100%;
-      background-color: #ffffff;
+      background-color: $color-white;
       z-index: -1;
     }
 
@@ -41,7 +41,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border: 1px solid #b6b6b6;
+      border: 1px solid $product-border-color;
     }
   }
 
@@ -61,9 +61,9 @@
     }
   }
 
-  &.active {
+  &:hover, .active {
     .iconWrapper {
-      color: #ffffff;
+      color: $color-white;
 
       &::after {
         background-color: $primary;
@@ -74,5 +74,11 @@
     .content {
       color: $primary;
     }
+  }
+}
+
+.featureLink {
+  &:hover {
+    text-decoration: none;
   }
 }

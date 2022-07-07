@@ -13,6 +13,7 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { toggleFavoriteProduct } from '../../../redux/productsRedux';
 
+
 const ProductBox = ({ name, price, promo, stars, id, isFavorite }) => {
   const dispatch = useDispatch();
   const productId = id;
