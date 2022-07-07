@@ -61,7 +61,7 @@
     }
   }
 
-  &.active {
+  &:hover, .active {
     .iconWrapper {
       color: #ffffff;
 
@@ -74,5 +74,11 @@
     .content {
       color: $primary;
     }
+  }
+}
+
+.featureLink {
+  &:hover {
+    text-decoration: none;
   }
 }
