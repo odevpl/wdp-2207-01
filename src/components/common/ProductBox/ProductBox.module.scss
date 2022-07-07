@@ -16,6 +16,9 @@
     }
     overflow: hidden;
     align-items: flex-end;
+    &:hover {
+      cursor: pointer;
+    }
 
     .image {
       width:100%;
@@ -37,7 +40,13 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+      visibility: hidden;
     }
+  }
+
+  &:hover .buttons {
+    cursor: pointer;
+    visibility: visible;
   }
 
   .content {
@@ -86,5 +95,9 @@
     .isActive {
       background: $primary;
     }
+  }
+
+  &:hover .price {
+    background: $primary;
   }
 }
