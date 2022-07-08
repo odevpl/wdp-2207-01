@@ -27,6 +27,7 @@
 
     select {
       -webkit-appearance: none;
+      font-size: 14px;
       border: 0;
       background-color: transparent;
       padding: 5px 30px 5px 35px;
@@ -35,8 +36,10 @@
       outline: none;
       font-size: 14px;
       &:hover {
-        cursor: pointer;
+        cursor:pointer;
       }
+
+
     }
   }
 
