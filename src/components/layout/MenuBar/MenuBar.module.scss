@@ -43,6 +43,10 @@
         border-color: $primary;
       }
 
+      &:hover {
+        @include base-hover-animation;
+      }
+
       &.active {
         border-color: $text-color;
       }
