@@ -85,6 +85,11 @@
     }
     .isActive {
       background: $primary;
+
+      &:hover {
+        background: $primary;
+        color: $text-color;
+      }
     }
   }
 }
