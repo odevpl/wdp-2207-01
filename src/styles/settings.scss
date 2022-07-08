@@ -21,3 +21,11 @@ $furniture-container-border: #e2e2e2;
 $dot-bg: #e1e1e1;
 
 $form-border-color: #292929;
+
+$transition: all 500ms;
+$scale-base: 1.1;
+
+@mixin base-hover-animation {
+  transform: scale($scale-base);
+  transition: $transition;
+}
