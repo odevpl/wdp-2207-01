@@ -18,9 +18,15 @@ export const removeFromCompare = payload => ({ type: REMOVE_FROM_COMPARE, payloa
 export default function reducer(statePart = [], action) {
   switch (action.type) {
     case ADD_TO_COMPARE:
-      return [...statePart, action.payload];
+      return {
+        ...statePart,
+        products: [...statePart.products, action.payload],
+      };
     case REMOVE_FROM_COMPARE: {
-      return statePart.filter(product => product !== action.payload);
+      return {
+        ...statePart,
+        products: statePart.products.filter(product => product !== action.payload),
+      };
     }
     default:
       return statePart;
