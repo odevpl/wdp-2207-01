@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
 
-const NewFurniture = ({ categories, products }) => {
+import { getAll } from '../../../redux/categoriesRedux.js';
+import { getNew } from '../../../redux/productsRedux.js';
+import { useSelector } from 'react-redux';
+
+const NewFurniture = () => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
+  const categories = useSelector(state => getAll(state));
+  const products = useSelector(state => getNew(state));
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
   const pagesCount = Math.ceil(categoryProducts.length / 8);
@@ -65,32 +70,6 @@ const NewFurniture = ({ categories, products }) => {
       </div>
     </div>
   );
-};
-
-NewFurniture.propTypes = {
-  children: PropTypes.node,
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-    })
-  ),
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      category: PropTypes.string,
-      price: PropTypes.number,
-      stars: PropTypes.number,
-      promo: PropTypes.string,
-      newFurniture: PropTypes.bool,
-    })
-  ),
-};
-
-NewFurniture.defaultProps = {
-  categories: [],
-  products: [],
 };
 
 export default NewFurniture;
