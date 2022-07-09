@@ -24,6 +24,9 @@
       }
     }
   }
+  .positionRelative{
+    position: relative;
+  }
 
   .cart {
     .cartBox {
@@ -69,6 +72,22 @@
           background-color: lighten($primary, 10%);
         }
       }
+    }
+  }
+  @media all and (max-width: 768px) {
+
+    .phoneNumber {
+      width: auto;
+      position: absolute;
+      top: 70%;
+      right: 0;
+
+      p {
+        font-size: 14px;
+      }
+    }
+    .cart{
+      height: 53%;
     }
   }
 }
