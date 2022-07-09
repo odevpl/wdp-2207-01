@@ -1,3 +1,16 @@
 @import "../../../styles/settings.scss";
 
+.root{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 150px;
+  background-color: $product-border-color;
+  text-align: center;
+  z-index: 999;
+}
 
+.hidden{
+  display: none;
+}

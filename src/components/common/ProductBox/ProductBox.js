@@ -41,7 +41,7 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) =
         dispatch(addToCompare(productId));
         dispatch(toggleCompareProduct(productId));
       } else {
-        alert('Max number of compared products is 4');
+        alert('Max number of compared products is 4'); // change to final alert modal
       }
     }
   };
