@@ -93,6 +93,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    :first-child {
+      margin-right: 3px;
+    }
     .buttonHover {
       cursor: pointer;
     }
@@ -108,5 +111,25 @@
 
   &:hover .price {
     background: $primary;
+  }
+
+  .price {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    :first-child {
+      margin-right: 3px;
+    }
+  }
+
+  .oldPrice {
+    background-color: $color-white;
+    color: $product-border-color;
+    text-decoration: line-through;
+    text-decoration-color: black;
+  }
+
+  .hidden {
+    display: none;
   }
 }
