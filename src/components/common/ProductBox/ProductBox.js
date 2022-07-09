@@ -15,6 +15,7 @@ import {
   toggleFavoriteProduct,
   toggleCompareProduct,
 } from '../../../redux/productsRedux';
+import { addToCompare } from '../../../redux/comparedProductsRedux';
 
 const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) => {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) =
   const handleCompare = e => {
     e.preventDefault();
     dispatch(toggleCompareProduct(productId));
+    if (!isCompared) {
+      dispatch(addToCompare(productId));
+    }
   };
 
   return (
