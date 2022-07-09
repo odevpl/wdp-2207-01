@@ -11,14 +11,23 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
-import { toggleFavoriteProduct } from '../../../redux/productsRedux';
+import {
+  toggleFavoriteProduct,
+  toggleCompareProduct,
+} from '../../../redux/productsRedux';
 
 const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) => {
   const dispatch = useDispatch();
   const productId = id;
+
   const handleClick = e => {
     e.preventDefault();
     dispatch(toggleFavoriteProduct(productId));
+  };
+
+  const handleCompare = e => {
+    e.preventDefault();
+    dispatch(toggleCompareProduct(productId));
   };
 
   return (
@@ -57,6 +66,7 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) =
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button
+            onClick={handleCompare}
             className={clsx(styles.buttonHover, isCompared && styles.isActive)}
             variant='outline'
           >
