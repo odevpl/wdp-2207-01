@@ -22,7 +22,7 @@ const Swipeable = ({ action, children, page, pagesNumber }) => {
   };
 
   const handleMoveEnd = () => {
-    if (moveStart - moveEnd > 100 && page + 1 <= pagesNumber) {
+    if (moveStart - moveEnd > 100 && page + 1 <= pagesNumber - 1) {
       action(page + 1);
     }
     if (moveStart - moveEnd < -100 && page - 1 >= 0) {
