@@ -53,6 +53,7 @@
       padding-left: 10px;
       font-size: 14px;
       outline: none;
+      width: 100%;
 
       &::placeholder {
         color: $text-color;
@@ -63,6 +64,28 @@
       border: 0;
       background-color: transparent;
       outline: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .root {
+    border: none;
+    height: auto;
+    flex-direction: column-reverse;
+
+    .category {
+      border-right: none;
+
+      .icon:last-child {
+        right: 17px;
+      }
+    }
+
+    .searchField {
+      border-bottom: 1px solid $form-border-color;
+      border-inline: 10px solid transparent;
+      padding-left: 15px;
     }
   }
 }

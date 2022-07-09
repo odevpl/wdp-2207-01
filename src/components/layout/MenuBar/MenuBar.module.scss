@@ -3,6 +3,11 @@
 .root {
   box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
   background-color: $color-white;
+  display: flex;
+
+  input[type="checkbox"] {
+    display: none;
+  }
 
   :global(.container) > :global(.row) {
     height: 84px;
@@ -46,6 +51,91 @@
       &.active {
         border-color: $text-color;
       }
+    }
+  }
+
+  .dropdownButton {
+    display: none;
+    padding: 5px;
+    align-self: flex-end;
+  }
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+    .menu {
+      order: 1;
+    }
+
+    .searchLayout {
+      order: 2;
+    }
+
+    :global(.container) > :global(.row) {
+      height: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global(.container) > :global(.row) {
+      position: relative;
+      padding-inline: 10px;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      width: 100%;
+      top: 100%;
+      z-index: 1;
+      background: $color-white;
+      padding: 0;
+
+      ul {
+        flex-flow: column;
+        align-items: flex-end;
+        width: 100%;
+
+        li {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      a {
+        border-right: 65px transparent solid;
+        border-bottom: 1px solid $furniture-container-border;
+        &.active {
+          border: none;
+        }
+      }
+    }
+
+    input:checked {
+      & ~ .searchLayout .dropdownButton {
+        background-color: $primary;
+        color: $color-white;
+      }
+
+      & ~ .menu {
+        display: block;
+      }
+    }
+
+    .dropdownButton {
+      display: inline-block;
+      border-radius: 4px;
+      margin: auto 0;
+      padding-inline: 10px;
+      align-self: stretch;
+    }
+
+    .searchLayout {
+      display: flex;
+      margin: auto;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      width: calc(100% - 10px);
     }
   }
 }
