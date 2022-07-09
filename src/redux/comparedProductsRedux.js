@@ -1,6 +1,6 @@
 /* selectors */
-export const getAll = ({ comparedProducts }) => comparedProducts.products;
-export const getCount = ({ comparedProducts }) => comparedProducts.products.length;
+export const getAllCompared = state => state.comparedProducts.products;
+export const getCountOfCompared = state => state.comparedProducts.products.length;
 
 /* action name creator */
 const reducerName = 'comparedProducts';

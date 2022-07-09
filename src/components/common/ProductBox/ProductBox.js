@@ -10,12 +10,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleFavoriteProduct,
   toggleCompareProduct,
 } from '../../../redux/productsRedux';
-import { addToCompare, removeFromCompare } from '../../../redux/comparedProductsRedux';
+import {
+  addToCompare,
+  removeFromCompare,
+  getCountOfCompared,
+} from '../../../redux/comparedProductsRedux';
 
 const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) => {
   const dispatch = useDispatch();
@@ -25,14 +29,20 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) =
     e.preventDefault();
     dispatch(toggleFavoriteProduct(productId));
   };
+  const count = useSelector(state => getCountOfCompared(state));
 
   const handleCompare = e => {
     e.preventDefault();
-    dispatch(toggleCompareProduct(productId));
-    if (!isCompared) {
-      dispatch(addToCompare(productId));
-    } else {
+    if (isCompared) {
+      dispatch(toggleCompareProduct(productId));
       dispatch(removeFromCompare(productId));
+    } else {
+      if (count < 4) {
+        dispatch(addToCompare(productId));
+        dispatch(toggleCompareProduct(productId));
+      } else {
+        alert('Max number of compared products is 4');
+      }
     }
   };
 
