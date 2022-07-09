@@ -1,16 +1,38 @@
 @import "../../../styles/settings.scss";
 
-.root{
+.root {
   display: flex;
   position: fixed;
   bottom: 0;
   width: 100vw;
   height: 150px;
   background-color: $product-border-color;
-  text-align: center;
   z-index: 999;
+  justify-content: center;
+  align-items: center;
 }
 
-.hidden{
+.hidden {
   display: none;
+}
+
+.container {
+  max-width: 1140px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.comparedCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.buttonWrapper {
+  margin-left: 20px;
 }

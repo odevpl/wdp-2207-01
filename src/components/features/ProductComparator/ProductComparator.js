@@ -1,23 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
-import { getCountOfCompared } from '../../../redux/comparedProductsRedux';
+import {
+  getCountOfCompared,
+  getAllCompared,
+} from '../../../redux/comparedProductsRedux';
+import Button from '../../common/Button/Button';
+import ComparedProductCard from '../../features/ComparedProductCard/ComparedProductCard';
 
 import styles from './ProductComparator.module.scss';
 
 const ProductComparator = () => {
   const comparedProductsCount = useSelector(state => getCountOfCompared(state));
 
+  //get all compared products (id)
+  const comparedProducts = useSelector(state => getAllCompared(state));
+
   return (
     <div className={clsx(styles.root, comparedProductsCount < 2 && styles.hidden)}>
-      <div className='container'>Compare products</div>
+      <div className={styles.container}>
+        <div className={styles.comparedCards}>
+          {comparedProducts.map(product => (
+            <ComparedProductCard key={product} id={product} />
+          ))}
+        </div>
+        <div className={styles.buttonWrapper}>
+          <Button variant='main'>Compare</Button>
+        </div>
+      </div>
     </div>
   );
-};
-
-ProductComparator.propTypes = {
-  children: PropTypes.node,
 };
 
 export default ProductComparator;
