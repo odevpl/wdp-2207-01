@@ -50,6 +50,13 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) =
     <div className={styles.root}>
       <div className={styles.photo}>
         {promo && <div className={styles.sale}>{promo}</div>}
+        <img
+          className={styles.image}
+          src={`https://source.unsplash.com/random/${Math.floor(
+            Math.random() * 500 + 500
+          )}x${Math.floor(Math.random() * 500 + 500)}?random=${Math.random()}`}
+          alt='product'
+        />
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
@@ -89,8 +96,8 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) =
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
-        <div className={styles.price}>
-          <Button noHover variant='small'>
+        <div>
+          <Button className={styles.price} noHover variant='small'>
             $ {price}
           </Button>
         </div>

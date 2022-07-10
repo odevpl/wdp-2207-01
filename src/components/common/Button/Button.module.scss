@@ -12,6 +12,7 @@
   padding: 10px 30px;
 
   &:not(.noHover):hover {
+    @include base-hover-animation;
     color: $color-white !important;
     background-color: $primary;
     text-decoration: none;
@@ -35,6 +36,7 @@
   line-height: 22px;
 
   &:not(.noHover):hover {
+    @include base-hover-animation;
     background-color: $button-main;
     color: $color-white;
   }
