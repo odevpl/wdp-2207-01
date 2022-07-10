@@ -61,15 +61,16 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite }) => {
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
-        <div className={styles.price}>
-          <Button noHover variant='small'>
-            $ {price}
+        <div>
+          <Button className={styles.price} noHover variant='small'>
+          $ {price}
           </Button>
         </div>
       </div>
     </div>
   );
 };
+
 
 ProductBox.propTypes = {
   children: PropTypes.node,
