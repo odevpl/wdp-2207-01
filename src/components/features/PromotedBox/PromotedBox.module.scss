@@ -1,0 +1,112 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  padding: 0 0 5rem 0;
+  color: $color-white;
+  background-color: #ddd;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 40%;
+
+    .imgLeft {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      font-weight: bold;
+      font-size: 40px;
+      .shadow {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(84, 84, 84, 0.6);
+        .description {
+          padding: 10px;
+          position: absolute;
+          left:0;
+          bottom: 0;
+          .smallFont {
+            font-size: 20px;
+            margin-bottom: 0;
+          }
+          .percent {
+          border: 3px solid $color-white;
+          padding: 5px;
+        }
+        }
+
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .imgRight {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 49%;
+      max-height: 370px;
+              img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        }
+      .chairWrapper{
+        height: 47%;
+        position: relative;
+        .chairDescriptionWrapper {
+          color: $text-color;
+          position: absolute;
+          top:37%;
+          left: 38%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          flex-direction: column;
+          .chairDescription{
+            font-size: 30px;
+          }
+          .chairDescription2{
+            font-size: 15px;
+            font-weight: bolder;
+          }
+          .chairPrice{
+            font-size: 30px;
+            color: $primary;
+            font-weight: bolder;
+          }
+        }
+
+      }
+      .bedWrapper{
+        height: 47%;
+        position: relative;
+        .bedDescriptionWrapper{
+          position: absolute;
+          top:35%;
+          left:1%;
+          display: flex;
+          flex-direction: column;
+          .bedDescription{
+            color:$primary;
+            font-size: 20px;
+          }
+          .bedDescription2{
+            color: $text-color;
+            font-weight: bolder;
+          }
+        }
+      }
+    }
+
+  }
+
+}
