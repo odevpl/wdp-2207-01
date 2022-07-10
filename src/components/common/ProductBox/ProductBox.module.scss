@@ -40,13 +40,7 @@
     .buttons {
       display: flex;
       justify-content: space-between;
-      visibility: hidden;
     }
-  }
-
-  &:hover .buttons {
-    cursor: pointer;
-    visibility: visible;
   }
 
   .content {
@@ -61,10 +55,6 @@
     }
 
     .stars {
-
-      :hover {
-        @include base-hover-animation;
-      }
       a {
         text-decoration: none;
         color: rgb(42, 42, 42);
@@ -98,15 +88,39 @@
     }
     .isActive {
       background: $primary;
-
-      &:hover {
-        background: $primary;
-        color: $text-color;
-      }
     }
   }
 
-  &:hover .price {
-    background: $primary;
-  }
+  @media (min-width: 992px) {
+    .root {
+      .stars {
+        :hover {
+          @include base-hover-animation;
+        }
+      }
+  
+      .photo {
+        .buttons {
+          visibility: hidden;
+        }
+        &:hover .buttons {
+          cursor: pointer;
+          visibility: visible;
+        }
+      }
+  
+      .actions {
+        .isActive {
+          &:hover {
+            background: $primary;
+            color: $text-color;
+          }
+        }
+      }
+  
+      &:hover .price {
+        background: $primary;
+      }
+    }
+    }
 }
