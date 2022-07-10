@@ -7,7 +7,7 @@
   width: 100vw;
   height: 150px;
   background-color: $product-border-color;
-  z-index: 999;
+  z-index: 100;
   justify-content: center;
   align-items: center;
 }
@@ -34,5 +34,7 @@
 }
 
 .buttonWrapper {
+  margin-left: 20px;
+  margin: auto;
   margin-left: 20px;
 }

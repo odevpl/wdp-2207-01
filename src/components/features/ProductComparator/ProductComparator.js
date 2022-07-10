@@ -13,7 +13,6 @@ import styles from './ProductComparator.module.scss';
 const ProductComparator = () => {
   const comparedProductsCount = useSelector(state => getCountOfCompared(state));
 
-  //get all compared products (id)
   const comparedProducts = useSelector(state => getAllCompared(state));
 
   return (
