@@ -75,6 +75,10 @@
       color: $primary;
     }
   }
+
+  &:hover {
+    @include base-hover-animation;
+  }
 }
 
 .featureLink {

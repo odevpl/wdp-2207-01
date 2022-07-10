@@ -11,6 +11,10 @@
     li {
       display: inline-block;
       line-height: 55px;
+      
+      &:hover {
+        @include base-hover-animation;
+      }
 
       a {
         color: $color-white;
