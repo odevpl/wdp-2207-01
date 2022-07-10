@@ -44,3 +44,8 @@
     }
   }
 }
+@media all and (max-width: 768px) {
+  span {
+    font-size: 0;
+  }
+}
