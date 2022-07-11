@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart, faEye } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import StarRating from '../../features/StarRating/StarRating';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleFavoriteProduct,
@@ -33,7 +34,9 @@ const ProductBox = ({
   isFavorite,
   isCompared,
   image,
+  ownStars,
 }) => {
+
   const dispatch = useDispatch();
 
   const handleClick = e => {
@@ -93,15 +96,7 @@ const ProductBox = ({
       <div className={styles.content}>
         <h5>{name}</h5>
         <div className={styles.stars}>
-          {[1, 2, 3, 4, 5].map(i => (
-            <a key={i} href='#'>
-              {i <= stars ? (
-                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-              ) : (
-                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-              )}
-            </a>
-          ))}
+          <StarRating id={id} ownStars={ownStars} stars={stars} />
         </div>
       </div>
       <div className={styles.line}></div>
@@ -137,6 +132,7 @@ const ProductBox = ({
           </Button>
           <Button noHover variant='small'>
             $ {Number.parseFloat(price).toFixed(2)}
+
           </Button>
         </div>
       </div>
@@ -156,6 +152,7 @@ ProductBox.propTypes = {
   isFeatured: PropTypes.bool,
   isCompared: PropTypes.bool,
   image: PropTypes.number,
+  ownStars: PropTypes.number,
 };
 
 export default ProductBox;
