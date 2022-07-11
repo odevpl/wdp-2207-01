@@ -7,7 +7,6 @@
 
   .photo {
     position: relative;
-    padding: 0 10px;
     background: {
       color: $product-image-bg;
       size: contain;
@@ -18,6 +17,10 @@
     align-items: flex-end;
     &:hover {
       cursor: pointer;
+
+      .additionalInfo {
+        display: block;
+      }
     }
 
     .image {
@@ -41,6 +44,28 @@
       display: flex;
       justify-content: space-between;
       visibility: hidden;
+    }
+
+    .additionalInfo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      inset: 0 0 0 0;
+      text-align: center;
+      display: none;
+
+      a {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .timerLayout {
+        position: absolute;
+        bottom: 10px;
+        width: inherit;
+      }
     }
   }
 
