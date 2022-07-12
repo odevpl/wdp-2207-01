@@ -62,7 +62,7 @@ const initialState = {
       promo: 'sale',
       newFurniture: true,
       isFavorite: true,
-      isCompared: true,
+      isCompared: false,
     },
     {
       id: 'aenean-ru-bristique-6',
@@ -278,6 +278,9 @@ const initialState = {
     },
   ],
   cart: {
+    products: [],
+  },
+  comparedProducts: {
     products: [],
   },
   feedback: [

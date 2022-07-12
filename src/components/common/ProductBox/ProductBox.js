@@ -10,15 +10,49 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
-import { toggleFavoriteProduct } from '../../../redux/productsRedux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  toggleFavoriteProduct,
+  toggleCompareProduct,
+} from '../../../redux/productsRedux';
+import {
+  addToCompare,
+  removeFromCompare,
+  getCountOfCompared,
+} from '../../../redux/comparedProductsRedux';
 
-const ProductBox = ({ name, price, oldPrice, promo, stars, id, isFavorite, isCompared }) => {
+const ProductBox = ({
+  name,
+  price,
+  oldPrice,
+  promo,
+  stars,
+  id,
+  isFavorite,
+  isCompared,
+}) => {
   const dispatch = useDispatch();
   const productId = id;
+
   const handleClick = e => {
     e.preventDefault();
     dispatch(toggleFavoriteProduct(productId));
+  };
+  const count = useSelector(state => getCountOfCompared(state));
+
+  const handleCompare = e => {
+    e.preventDefault();
+    if (isCompared) {
+      dispatch(toggleCompareProduct(productId));
+      dispatch(removeFromCompare(productId));
+    } else {
+      if (count < 4) {
+        dispatch(addToCompare(productId));
+        dispatch(toggleCompareProduct(productId));
+      } else {
+        alert('Max number of compared products is 4'); // change to final alert modal
+      }
+    }
   };
 
   return (
@@ -64,6 +98,7 @@ const ProductBox = ({ name, price, oldPrice, promo, stars, id, isFavorite, isCom
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button
+            onClick={handleCompare}
             className={clsx(styles.buttonHover, isCompared && styles.isActive)}
             variant='outline'
           >
@@ -86,7 +121,6 @@ const ProductBox = ({ name, price, oldPrice, promo, stars, id, isFavorite, isCom
     </div>
   );
 };
-
 
 ProductBox.propTypes = {
   children: PropTypes.node,
