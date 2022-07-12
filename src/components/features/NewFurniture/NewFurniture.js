@@ -39,7 +39,7 @@ const NewFurniture = () => {
   const dots = [];
   for (let i = 0; i < pagesCount; i++) {
     dots.push(
-      <li>
+      <li key={i}>
         <a
           onClick={() => {
             setIsFaded(true);
