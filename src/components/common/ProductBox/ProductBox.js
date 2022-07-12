@@ -13,7 +13,7 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { toggleFavoriteProduct } from '../../../redux/productsRedux';
 
-const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) => {
+const ProductBox = ({ name, price, oldPrice, promo, stars, id, isFavorite, isCompared }) => {
   const dispatch = useDispatch();
   const productId = id;
   const handleClick = e => {
@@ -70,9 +70,16 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) =
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
-        <div>
-          <Button className={styles.price} noHover variant='small'>
-          $ {price}
+        <div className={styles.price}>
+          <Button
+            noHover
+            variant='small'
+            className={clsx(styles.oldPrice, !oldPrice && styles.hidden)}
+          >
+            $ {Number.parseFloat(oldPrice).toFixed(2)}
+          </Button>
+          <Button noHover variant='small'>
+            $ {Number.parseFloat(price).toFixed(2)}
           </Button>
         </div>
       </div>
@@ -85,6 +92,7 @@ ProductBox.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
+  oldPrice: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
   id: PropTypes.string,
