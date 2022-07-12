@@ -568,16 +568,6 @@ const initialState = {
       isFavorite: false,
     },
     {
-      id: 'aenean-ru-bristique-56',
-      name: 'Aenean Ru Bristique 56',
-      category: 'sofa',
-      price: 30,
-      stars: 2,
-      promo: 'sale',
-      newFurniture: true,
-      isFavorite: false,
-    },
-    {
       id: 'aenean-ru-bristique-57',
       name: 'Aenean Ru Bristique 57',
       category: 'sofa',
@@ -948,7 +938,7 @@ const initialState = {
       isFavorite: false,
     },
     {
-      id: 'aenean-ru-bristique-9495',
+      id: 'aenean-ru-bristique-94',
       name: 'Aenean Ru Bristique 94',
       category: 'table',
       price: 30,
@@ -958,7 +948,7 @@ const initialState = {
       isFavorite: false,
     },
     {
-      id: 'aenean-ru-bristique-23',
+      id: 'aenean-ru-bristique-95',
       name: 'Aenean Ru Bristique 95',
       category: 'table',
       price: 30,
