@@ -11,6 +11,10 @@
     li {
       display: inline-block;
       line-height: 55px;
+      
+      &:hover {
+        @include base-hover-animation;
+      }
 
       a {
         color: $color-white;
@@ -38,5 +42,10 @@
     .icon {
       margin-right: 5px;
     }
+  }
+}
+@media all and (max-width: 768px) {
+  span {
+    font-size: 0;
   }
 }

@@ -13,8 +13,7 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { toggleFavoriteProduct } from '../../../redux/productsRedux';
 
-
-const ProductBox = ({ name, price, promo, stars, id, isFavorite }) => {
+const ProductBox = ({ name, price, promo, stars, id, isFavorite, isCompared }) => {
   const dispatch = useDispatch();
   const productId = id;
   const handleClick = e => {
@@ -26,6 +25,13 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite }) => {
     <div className={styles.root}>
       <div className={styles.photo}>
         {promo && <div className={styles.sale}>{promo}</div>}
+        <img
+          className={styles.image}
+          src={`https://source.unsplash.com/random/${Math.floor(
+            Math.random() * 500 + 500
+          )}x${Math.floor(Math.random() * 500 + 500)}?random=${Math.random()}`}
+          alt='product'
+        />
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
@@ -57,19 +63,23 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite }) => {
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+          <Button
+            className={clsx(styles.buttonHover, isCompared && styles.isActive)}
+            variant='outline'
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
-        <div className={styles.price}>
-          <Button noHover variant='small'>
-            $ {price}
+        <div>
+          <Button className={styles.price} noHover variant='small'>
+          $ {price}
           </Button>
         </div>
       </div>
     </div>
   );
 };
+
 
 ProductBox.propTypes = {
   children: PropTypes.node,
@@ -79,6 +89,7 @@ ProductBox.propTypes = {
   stars: PropTypes.number,
   id: PropTypes.string,
   isFavorite: PropTypes.bool,
+  isCompared: PropTypes.bool,
 };
 
 export default ProductBox;

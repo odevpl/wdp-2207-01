@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProductSearch from '../../features/ProductSearch/ProductSearch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './MenuBar.module.scss';
 
@@ -9,8 +11,12 @@ const MenuBar = ({ children }) => (
   <div className={styles.root}>
     <div className='container'>
       <div className='row align-items-center'>
-        <div className='col'>
+        <input id='dropdown' type='checkbox'></input>
+        <div className={styles.searchLayout}>
           <ProductSearch />
+          <label className={styles.dropdownButton} htmlFor='dropdown'>
+            <FontAwesomeIcon icon={faBars} />
+          </label>
         </div>
         <div className={'col-auto ' + styles.menu}>
           <ul>

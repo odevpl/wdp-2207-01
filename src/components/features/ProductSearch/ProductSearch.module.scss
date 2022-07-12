@@ -24,23 +24,61 @@
       right: 10px;
       z-index: 0;
     }
+  }
 
-    select {
-      -webkit-appearance: none;
-      font-size: 14px;
-      border: 0;
-      background-color: transparent;
-      padding: 5px 30px 5px 35px;
-      position: relative;
-      z-index: 1;
-      outline: none;
-      font-size: 14px;
-      &:hover {
-        cursor:pointer;
+  .categoryList {
+    width: 210px;
+    list-style-type: none;
+    margin: 0;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+      & li {
+        line-height: 45px;
       }
 
+      &:hover .categoryDropdown {
+        display: inline-block;
+      }
 
-    }
+      & .categoryDropdown {
+        position: absolute;
+        width: calc(210px + 2px);
+        background: $color-white;
+        top: 100%;
+        border: 1px solid $form-border-color;
+        border-bottom: none;
+        left: -1px;
+        margin: 0;
+        padding: 0;
+        display: none;
+        list-style-type: none;
+        z-index: 2;
+
+        & li {
+          text-align: left;
+          border-bottom: 1px solid $form-border-color;
+          padding: 0;
+
+          & input {
+            display: none;
+
+            &:checked ~ label {
+              color: $primary;
+            }
+          }
+
+          & label {
+            width: 100%;
+            margin: 0;
+            height: 45px;
+            padding: 0px 15px;
+            cursor: pointer;
+          }
+        }
+      }
   }
 
   .searchField {
@@ -53,6 +91,7 @@
       padding-left: 10px;
       font-size: 14px;
       outline: none;
+      width: 100%;
 
       &::placeholder {
         color: $text-color;
@@ -63,6 +102,28 @@
       border: 0;
       background-color: transparent;
       outline: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .root {
+    border: none;
+    height: auto;
+    flex-direction: column-reverse;
+
+    .category {
+      border-right: none;
+
+      .icon:last-child {
+        right: 17px;
+      }
+    }
+
+    .searchField {
+      border-bottom: 1px solid $form-border-color;
+      border-inline: 10px solid transparent;
+      padding-left: 15px;
     }
   }
 }

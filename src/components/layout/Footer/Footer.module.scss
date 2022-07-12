@@ -67,6 +67,10 @@
           display: inline-block;
           margin-left: 1rem;
 
+          &:hover {
+            @include base-hover-animation;
+          }
+
           a {
             color: rgb(169, 169, 169);
             text-decoration: none;
