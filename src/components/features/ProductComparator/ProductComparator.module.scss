@@ -1,0 +1,40 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 150px;
+  background-color: $product-border-color;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  max-width: 1140px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.comparedCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.buttonWrapper {
+  margin-left: 20px;
+  margin: auto;
+  margin-left: 20px;
+}
