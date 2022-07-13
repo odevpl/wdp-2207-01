@@ -8,7 +8,7 @@ import {
   faExchangeAlt,
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
-import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faStar as farStar, faHeart, faEye } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -20,6 +20,7 @@ import {
   removeFromCompare,
   getCountOfCompared,
 } from '../../../redux/comparedProductsRedux';
+import Timer from '../Timer/Timer';
 
 const ProductBox = ({
   name,
@@ -28,6 +29,7 @@ const ProductBox = ({
   promo,
   stars,
   id,
+  isFeatured,
   isFavorite,
   isCompared,
 }) => {
@@ -58,7 +60,7 @@ const ProductBox = ({
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
-        {promo && <div className={styles.sale}>{promo}</div>}
+        {promo && !isFeatured && <div className={styles.sale}>{promo}</div>}
         <img
           className={styles.image}
           src={`https://source.unsplash.com/random/${Math.floor(
@@ -66,12 +68,24 @@ const ProductBox = ({
           )}x${Math.floor(Math.random() * 500 + 500)}?random=${Math.random()}`}
           alt='product'
         />
-        <div className={styles.buttons}>
-          <Button variant='small'>Quick View</Button>
-          <Button variant='small'>
-            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
-          </Button>
-        </div>
+        {isFeatured && (
+          <div className={styles.additionalInfo}>
+            <Button variant='medium'>
+              <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+            </Button>
+            <div className={styles.timerLayout}>
+              <Timer />
+            </div>
+          </div>
+        )}
+        {!isFeatured && (
+          <div className={styles.buttons}>
+            <Button variant='small'>Quick View</Button>
+            <Button variant='small'>
+              <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+            </Button>
+          </div>
+        )}
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
@@ -90,6 +104,11 @@ const ProductBox = ({
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
+          {isFeatured && (
+            <Button variant='outline'>
+              <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
+            </Button>
+          )}
           <Button
             onClick={handleClick}
             className={clsx(styles.buttonHover, isFavorite && styles.isActive)}
@@ -131,6 +150,7 @@ ProductBox.propTypes = {
   stars: PropTypes.number,
   id: PropTypes.string,
   isFavorite: PropTypes.bool,
+  isFeatured: PropTypes.bool,
   isCompared: PropTypes.bool,
 };
 
