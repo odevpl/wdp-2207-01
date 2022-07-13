@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Swipeable.module.scss';
 
 const Swipeable = ({ action, children, page, pagesNumber, isFaded }) => {
   const [moveStart, setMoveStart] = useState(0);
@@ -33,7 +32,6 @@ const Swipeable = ({ action, children, page, pagesNumber, isFaded }) => {
 
   return (
     <div
-      className={`${isFaded ? styles.faded : ''}`}
       onTouchStart={e => handleTouchStart(e)}
       onTouchMove={e => handleTouchMove(e)}
       onTouchEnd={() => handleMoveEnd()}

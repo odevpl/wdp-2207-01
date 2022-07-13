@@ -25,8 +25,8 @@ const NewFurniture = () => {
         <a
           onClick={() => {
             setIsFaded(true);
+            setTimeout(() => setIsFaded(false), 2000);
             setActivePage(i);
-            // setIsFaded(false);
           }}
           className={i === activePage ? styles.active : ''}
         >
@@ -50,7 +50,11 @@ const NewFurniture = () => {
                   <li key={item.id}>
                     <a
                       className={item.id === activeCategory ? styles.active : ''}
-                      onClick={() => setActiveCategory(item.id)}
+                      onClick={() => {
+                        setIsFaded(true);
+                        setTimeout(() => setIsFaded(false), 2000);
+                        setActiveCategory(item.id);
+                      }}
                     >
                       {item.name}
                     </a>
@@ -63,13 +67,8 @@ const NewFurniture = () => {
             </div>
           </div>
         </div>
-        <Swipeable
-          action={setActivePage}
-          page={activePage}
-          pagesNumber={pagesCount}
-          isFaded={isFaded}
-        >
-          <div className={`row`}>
+        <Swipeable action={setActivePage} page={activePage} pagesNumber={pagesCount}>
+          <div className={`row ${isFaded ? styles.faded : ''}`}>
             {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
               <div key={item.id} className='col-3'>
                 <ProductBox {...item} />
