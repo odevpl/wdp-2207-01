@@ -84,3 +84,20 @@
     }
   }
 }
+
+@media (max-width: 992px){
+  .copyright {
+    text-align: left !important;
+  }
+  .emptySpace {
+    order: -1;
+    flex: 1 0 100%;
+  }
+}
+
+@media (max-width:575px) {
+  .footerWrapper {
+    text-align: center !important;
+  }
+}
+

@@ -10,16 +10,51 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart, faEye } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
-import { toggleFavoriteProduct } from '../../../redux/productsRedux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  toggleFavoriteProduct,
+  toggleCompareProduct,
+} from '../../../redux/productsRedux';
+import {
+  addToCompare,
+  removeFromCompare,
+  getCountOfCompared,
+} from '../../../redux/comparedProductsRedux';
 import Timer from '../Timer/Timer';
 
-const ProductBox = ({ name, price, promo, stars, id, isFavorite, isFeatured }) => {
+const ProductBox = ({
+  name,
+  price,
+  oldPrice,
+  promo,
+  stars,
+  id,
+  isFeatured,
+  isFavorite,
+  isCompared,
+}) => {
   const dispatch = useDispatch();
   const productId = id;
+
   const handleClick = e => {
     e.preventDefault();
     dispatch(toggleFavoriteProduct(productId));
+  };
+  const count = useSelector(state => getCountOfCompared(state));
+
+  const handleCompare = e => {
+    e.preventDefault();
+    if (isCompared) {
+      dispatch(toggleCompareProduct(productId));
+      dispatch(removeFromCompare(productId));
+    } else {
+      if (count < 4) {
+        dispatch(addToCompare(productId));
+        dispatch(toggleCompareProduct(productId));
+      } else {
+        alert('Max number of compared products is 4'); // change to final alert modal
+      }
+    }
   };
 
   return (
@@ -81,13 +116,24 @@ const ProductBox = ({ name, price, promo, stars, id, isFavorite, isFeatured }) =
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+          <Button
+            onClick={handleCompare}
+            className={clsx(styles.buttonHover, isCompared && styles.isActive)}
+            variant='outline'
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
-        <div>
-          <Button className={styles.price} noHover variant='small'>
-            $ {price}
+        <div className={styles.price}>
+          <Button
+            noHover
+            variant='small'
+            className={clsx(styles.oldPrice, !oldPrice && styles.hidden)}
+          >
+            $ {Number.parseFloat(oldPrice).toFixed(2)}
+          </Button>
+          <Button noHover variant='small'>
+            $ {Number.parseFloat(price).toFixed(2)}
           </Button>
         </div>
       </div>
@@ -99,11 +145,13 @@ ProductBox.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
+  oldPrice: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
   id: PropTypes.string,
   isFavorite: PropTypes.bool,
   isFeatured: PropTypes.bool,
+  isCompared: PropTypes.bool,
 };
 
 export default ProductBox;

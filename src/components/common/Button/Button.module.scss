@@ -3,6 +3,29 @@
 // .root {
 // }
 
+.additionalData {
+  position: absolute;
+  background-color: $button-main;
+  left: calc(100% + 10px);
+  color: $color-white;
+  padding: 2.5px 10px;
+  white-space: nowrap;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    transform: translateY(-50%) rotate(-45deg);
+    top: 50%;
+    border: 5px solid transparent;
+    border-top: 5px solid $button-main;
+    border-left: 5px solid $button-main;
+  }
+}
+
 .main {
   background-color: $button-main;
   color: $color-white;
@@ -47,5 +70,13 @@
     @include base-hover-animation;
     background-color: $button-main;
     color: $color-white;
+  }
+}
+
+a {
+  position: relative; 
+
+  &:hover .additionalData {
+    display: block;
   }
 }
