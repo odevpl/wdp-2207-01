@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 const NewFurniture = () => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
+  const [isFaded, setIsFaded] = useState(false);
   const categories = useSelector(state => getAll(state));
   const products = useSelector(state => getNew(state));
 
@@ -22,7 +23,11 @@ const NewFurniture = () => {
     dots.push(
       <li>
         <a
-          onClick={() => setActivePage(i)}
+          onClick={() => {
+            setIsFaded(true);
+            setActivePage(i);
+            // setIsFaded(false);
+          }}
           className={i === activePage ? styles.active : ''}
         >
           page {i}
@@ -58,8 +63,13 @@ const NewFurniture = () => {
             </div>
           </div>
         </div>
-        <Swipeable action={setActivePage} page={activePage} pagesNumber={pagesCount}>
-          <div className='row'>
+        <Swipeable
+          action={setActivePage}
+          page={activePage}
+          pagesNumber={pagesCount}
+          isFaded={isFaded}
+        >
+          <div className={`row`}>
             {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
               <div key={item.id} className='col-3'>
                 <ProductBox {...item} />
