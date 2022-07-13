@@ -23,7 +23,7 @@ const NewFurniture = () => {
       <li>
         <a
           onClick={() => setActivePage(i)}
-          className={i === activePage && styles.active}
+          className={i === activePage ? styles.active : ''}
         >
           page {i}
         </a>
@@ -44,7 +44,7 @@ const NewFurniture = () => {
                 {categories.map(item => (
                   <li key={item.id}>
                     <a
-                      className={item.id === activeCategory && styles.active}
+                      className={item.id === activeCategory ? styles.active : ''}
                       onClick={() => setActiveCategory(item.id)}
                     >
                       {item.name}
