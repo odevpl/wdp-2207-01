@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@700&display=swap');
+@import "../../../styles/settings.scss";
+
+.root {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  margin-bottom: 2rem;
+  text-align: center;
+  
+  .feedbackBox {
+    padding: 0 60px 30px;
+    
+    .decoration {
+      font-size: 4rem;
+      margin: 0;
+      line-height: 1;
+      font-family: 'BIZ UDGothic', sans-serif;
+    }
+  
+    .desc {
+      margin: -15px 0 0 0;
+      font-size: 14px;
+      color: $text-color;
+    }
+
+    .image {
+      width: 60px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .personDesc {
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      p {
+        margin: 0;
+
+        &:first-of-type {
+          font-weight: 600;
+        }
+
+        &:last-of-type {
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+
+}

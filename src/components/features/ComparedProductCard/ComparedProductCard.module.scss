@@ -1,0 +1,40 @@
+@import "../../../styles/settings.scss";
+
+.card{
+  position: relative;
+  padding: 0 10px;
+  background: {
+    color: $product-border-color;
+    size: contain;
+    position: center;
+    repeat: no-repeat;
+  }
+  overflow: hidden;
+  align-items: flex-end;
+  &:hover {
+    cursor: pointer;
+  }
+
+  .image {
+    width:100px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    background: $primary;
+  }
+  &:hover .buttons {
+    cursor: pointer;
+    display: block;
+  }
+}
+
