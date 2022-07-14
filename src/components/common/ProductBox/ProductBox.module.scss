@@ -7,7 +7,6 @@
 
   .photo {
     position: relative;
-    padding: 0 10px;
     background: {
       color: $product-image-bg;
       size: contain;
@@ -18,10 +17,14 @@
     align-items: flex-end;
     &:hover {
       cursor: pointer;
+
+      .additionalInfo {
+        display: block;
+      }
     }
 
     .image {
-      width:100%;
+      width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
     }
@@ -40,6 +43,28 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+    }
+
+    .additionalInfo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      inset: 0 0 0 0;
+      text-align: center;
+      display: none;
+
+      a {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .timerLayout {
+        position: absolute;
+        bottom: 10px;
+        width: inherit;
+      }
     }
   }
 
@@ -83,12 +108,39 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    :first-child {
+      margin-right: 3px;
+    }
     .buttonHover {
       cursor: pointer;
     }
     .isActive {
       background: $primary;
     }
+  }
+
+  &:hover .price {
+    background: $primary;
+  }
+
+  .price {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    :first-child {
+      margin-right: 3px;
+    }
+  }
+
+  .oldPrice {
+    background-color: $color-white;
+    color: $product-border-color;
+    text-decoration: line-through;
+    text-decoration-color: black;
+  }
+
+  .hidden {
+    display: none;
   }
 
   @media (min-width: 992px) {
@@ -98,7 +150,7 @@
           @include base-hover-animation;
         }
       }
-  
+
       .photo {
         .buttons {
           visibility: hidden;
@@ -108,7 +160,7 @@
           visibility: visible;
         }
       }
-  
+
       .actions {
         .isActive {
           &:hover {
@@ -117,10 +169,10 @@
           }
         }
       }
-  
+
       &:hover .price {
         background: $primary;
       }
     }
-    }
+  }
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import NewFurniture from './NewFurniture';
+import FeaturedBox from './FeaturedBox';
 import store from '../../../redux/store';
 import { Provider } from 'react-redux';
 
-describe('Component NewFurniture', () => {
-  it('should render without crashing', () => {
+describe('Component FeaturedBox', () => {
+  it('should render properly', () => {
     const component = shallow(
       <Provider store={store}>
-        <NewFurniture />
+        <FeaturedBox />
       </Provider>
     );
     expect(component).toBeTruthy();

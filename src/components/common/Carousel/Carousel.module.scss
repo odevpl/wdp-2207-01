@@ -1,0 +1,21 @@
+@import "../../../styles/settings.scss";
+
+.images {
+  height: 65px;
+  display: flex;
+  gap:5px;
+  overflow: hidden;
+  margin-inline: 5px;
+
+  .imageContainer {
+    aspect-ratio: 1 / 1;
+
+    img {
+      background-color: $furniture-container-border;
+      padding: 5px;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
