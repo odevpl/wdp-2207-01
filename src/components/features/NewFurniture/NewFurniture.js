@@ -4,15 +4,15 @@ import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
 
-import { getAll } from '../../../redux/categoriesRedux.js';
-import { getNew } from '../../../redux/productsRedux.js';
+// import { getAll } from '../../../redux/categoriesRedux.js';
+import { getAllProducts, getNewProducts } from '../../../redux/productsRedux.js';
 import { useSelector } from 'react-redux';
 
 const NewFurniture = () => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
-  const categories = useSelector(state => getAll(state));
-  const products = useSelector(state => getNew(state));
+  const categories = useSelector(state => getAllProducts(state));
+  const products = useSelector(state => getNewProducts(state));
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
   const pagesCount = Math.ceil(categoryProducts.length / 8);

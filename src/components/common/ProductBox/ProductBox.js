@@ -11,16 +11,17 @@ import {
 import { faStar as farStar, faHeart, faEye } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  toggleFavoriteProduct,
-  toggleCompareProduct,
-} from '../../../redux/productsRedux';
-import {
-  addToCompare,
-  removeFromCompare,
-  getCountOfCompared,
-} from '../../../redux/comparedProductsRedux';
+// import {
+//   toggleFavoriteProduct,
+//   toggleCompareProduct,
+// } from '../../../redux/productsRedux';
+// import {
+//   addToCompare,
+//   removeFromCompare,
+//   getCountOfCompared,
+// } from '../../../redux/comparedProductsRedux';
 import Timer from '../Timer/Timer';
+import { toggleFavorite } from '../../../redux/productsRedux';
 
 const ProductBox = ({
   name,
@@ -38,24 +39,29 @@ const ProductBox = ({
 
   const handleClick = e => {
     e.preventDefault();
-    dispatch(toggleFavoriteProduct(productId));
+    dispatch(toggleFavorite(productId));
   };
-  const count = useSelector(state => getCountOfCompared(state));
 
-  const handleCompare = e => {
-    e.preventDefault();
-    if (isCompared) {
-      dispatch(toggleCompareProduct(productId));
-      dispatch(removeFromCompare(productId));
-    } else {
-      if (count < 4) {
-        dispatch(addToCompare(productId));
-        dispatch(toggleCompareProduct(productId));
-      } else {
-        alert('Max number of compared products is 4'); // change to final alert modal
-      }
-    }
-  };
+  // const handleClick = e => {
+  //   e.preventDefault();
+  //   dispatch(toggleFavoriteProduct(productId));
+  // };
+  // const count = useSelector(state => getCountOfCompared(state));
+
+  // const handleCompare = e => {
+  //   e.preventDefault();
+  //   if (isCompared) {
+  //     dispatch(toggleCompareProduct(productId));
+  //     dispatch(removeFromCompare(productId));
+  //   } else {
+  //     if (count < 4) {
+  //       dispatch(addToCompare(productId));
+  //       dispatch(toggleCompareProduct(productId));
+  //     } else {
+  //       alert('Max number of compared products is 4'); // change to final alert modal
+  //     }
+  //   }
+  // };
 
   return (
     <div className={styles.root}>
@@ -117,7 +123,6 @@ const ProductBox = ({
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button
-            onClick={handleCompare}
             className={clsx(styles.buttonHover, isCompared && styles.isActive)}
             variant='outline'
           >

@@ -5,13 +5,13 @@ import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/feedbackRedux';
 
 const FeedbackSection = () => {
-  const exampleFeedback = useSelector(state => getAll(state)).slice(0, 1);
+  // const exampleFeedback = useSelector(state => getAll(state)).slice(0, 1);
 
   return (
     <div className={styles.root}>
       <div className='container'>
         <SectionHeading text={'Client feedback'} dots />
-        {exampleFeedback.map(({ id, picture, firstName, lastName, role }) => {
+        {/* {exampleFeedback.map(({ id, picture, firstName, lastName, role }) => {
           return (
             <div key={id} className={styles.feedbackBox}>
               <p className={styles.decoration}>&quot;</p>
@@ -38,7 +38,7 @@ const FeedbackSection = () => {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
     </div>
   );

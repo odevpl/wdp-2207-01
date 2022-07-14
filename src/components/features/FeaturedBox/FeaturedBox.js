@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 
 const FeaturedBox = () => {
-  const exampleProduct = useSelector(state => getAll(state.products)).slice(0, 1);
+  // const exampleProduct = useSelector(state => getAll(state.products)).slice(0, 1);
 
   return (
     <div className={styles.root}>
@@ -33,9 +33,9 @@ const FeaturedBox = () => {
               </ul>
             </div>
             <div className={styles.products}>
-              {exampleProduct.map((item, idx) => (
+              {/* {exampleProduct.map((item, idx) => (
                 <ProductBox key={idx} {...item} isFeatured />
-              ))}
+              ))} */}
             </div>
           </div>
           <div className={`col-8 ${styles.carouselLayout}`}>
