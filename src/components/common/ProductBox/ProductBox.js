@@ -32,6 +32,7 @@ const ProductBox = ({
   isFeatured,
   isFavorite,
   isCompared,
+  image,
 }) => {
   const dispatch = useDispatch();
   const productId = id;
@@ -63,9 +64,7 @@ const ProductBox = ({
         {promo && !isFeatured && <div className={styles.sale}>{promo}</div>}
         <img
           className={styles.image}
-          src={`https://source.unsplash.com/random/${Math.floor(
-            Math.random() * 500 + 500
-          )}x${Math.floor(Math.random() * 500 + 500)}?random=${Math.random()}`}
+          src={`${process.env.PUBLIC_URL}/images/image${image}.png`}
           alt='product'
         />
         {isFeatured && (
@@ -152,6 +151,7 @@ ProductBox.propTypes = {
   isFavorite: PropTypes.bool,
   isFeatured: PropTypes.bool,
   isCompared: PropTypes.bool,
+  image: PropTypes.number,
 };
 
 export default ProductBox;
