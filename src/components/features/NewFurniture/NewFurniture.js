@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import { WidthContext } from '../../layout/MainLayout/MainLayout';
 
@@ -51,26 +53,32 @@ const NewFurniture = () => {
     <div className={styles.root}>
       <div className='container'>
         <div className={styles.panelBar}>
-          <div className='row no-gutters align-items-end'>
+          <div className='row no-gutters flex-column flex-wrap justify-space-between flex-md-row align-items-end'>
             <div className={'col-auto ' + styles.heading}>
               <h3>New furniture</h3>
             </div>
-            <div className={'col ' + styles.menu}>
-              <ul>
-                {categories.map(item => (
-                  <li key={item.id}>
-                    <a
-                      className={item.id === activeCategory && styles.active}
-                      onClick={() => setActiveCategory(item.id)}
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={'col-auto ' + styles.dots}>
-              <ul>{dots}</ul>
+            <div className={'col ' + styles.dropdownLayout}>
+              <div className={'col ' + styles.menu}>
+                <input id='categoryDropdown' type='checkbox' />
+                <ul>
+                  {categories.map(item => (
+                    <li key={item.id}>
+                      <a
+                        className={item.id === activeCategory && styles.active}
+                        onClick={() => setActiveCategory(item.id)}
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={'col-auto ' + styles.dots}>
+                <ul>{dots}</ul>
+                <label className={styles.dropdownButton} htmlFor='categoryDropdown'>
+                  <FontAwesomeIcon icon={faBars} />
+                </label>
+              </div>
             </div>
           </div>
         </div>
