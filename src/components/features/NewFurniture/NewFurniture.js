@@ -43,10 +43,12 @@ const NewFurniture = () => {
         <a
           onClick={() => {
             setIsFaded(true);
-            setTimeout(() => setIsFaded(false), 2000);
-            setActivePage(i);
+            setTimeout(() => setIsFaded(false), 1000);
+            setTimeout(() => setActivePage(i), 500);
           }}
-          className={i === activePage ? styles.active : ''}
+          className={`${i === activePage ? styles.active : ''} ${styles.dotButton} ${
+            isFaded ? styles.disabled : ''
+          }`}
         >
           page {i}
         </a>
@@ -69,11 +71,13 @@ const NewFurniture = () => {
                   {categories.map(item => (
                     <li key={item.id}>
                       <a
-                        className={item.id === activeCategory ? styles.active : ''}
+                        className={`${
+                          item.id === activeCategory ? styles.active : ''
+                        } ${isFaded ? styles.disabled : ''}`}
                         onClick={() => {
                           setIsFaded(true);
-                          setTimeout(() => setIsFaded(false), 2000);
-                          setActiveCategory(item.id);
+                          setTimeout(() => setIsFaded(false), 1000);
+                          setTimeout(() => setActiveCategory(item.id), 500);
                         }}
                       >
                         {item.name}
