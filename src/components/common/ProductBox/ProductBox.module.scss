@@ -24,7 +24,7 @@
     }
 
     .image {
-      width:100%;
+      width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: contain;
       padding: 10px;
@@ -44,7 +44,6 @@
     .buttons {
       display: flex;
       justify-content: space-between;
-      visibility: hidden;
     }
 
     .additionalInfo {
@@ -70,11 +69,6 @@
     }
   }
 
-  &:hover .buttons {
-    cursor: pointer;
-    visibility: visible;
-  }
-
   .content {
     text-align: center;
     padding: 20px;
@@ -87,10 +81,6 @@
     }
 
     .stars {
-
-      :hover {
-        @include base-hover-animation;
-      }
       a {
         text-decoration: none;
         color: rgb(42, 42, 42);
@@ -127,11 +117,6 @@
     }
     .isActive {
       background: $primary;
-
-      &:hover {
-        background: $primary;
-        color: $text-color;
-      }
     }
   }
 
@@ -157,5 +142,38 @@
 
   .hidden {
     display: none;
+  }
+
+  @media (min-width: 992px) {
+    .root {
+      .stars {
+        :hover {
+          @include base-hover-animation;
+        }
+      }
+
+      .photo {
+        .buttons {
+          visibility: hidden;
+        }
+        &:hover .buttons {
+          cursor: pointer;
+          visibility: visible;
+        }
+      }
+
+      .actions {
+        .isActive {
+          &:hover {
+            background: $primary;
+            color: $text-color;
+          }
+        }
+      }
+
+      &:hover .price {
+        background: $primary;
+      }
+    }
   }
 }
