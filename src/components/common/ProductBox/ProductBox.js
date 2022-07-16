@@ -10,16 +10,26 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart, faEye } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  // useSelector,
+} from 'react-redux';
 import {
   toggleFavoriteProduct,
   toggleCompareProduct,
 } from '../../../redux/productsRedux';
+// import {
+//   addToCompare,
+//   removeFromCompare,
+//   getCountOfCompared,
+// } from '../../../redux/comparedProductsRedux';
+
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
-  addToCompare,
-  removeFromCompare,
+  comparedProductsState,
   getCountOfCompared,
-} from '../../../redux/comparedProductsRedux';
+} from '../../../recoilStore/comparedProductsState';
+
 import Timer from '../Timer/Timer';
 
 const ProductBox = ({
@@ -41,16 +51,35 @@ const ProductBox = ({
     e.preventDefault();
     dispatch(toggleFavoriteProduct(productId));
   };
-  const count = useSelector(state => getCountOfCompared(state));
+
+  const [comparedProducts, setComparedProducts] = useRecoilState(comparedProductsState);
+
+  // const count = useSelector(state => getCountOfCompared(state));
+  const count = useRecoilValue(getCountOfCompared);
+
+  const payload = {
+    id: id,
+    image: image,
+  };
 
   const handleCompare = e => {
     e.preventDefault();
     if (isCompared) {
       dispatch(toggleCompareProduct(productId));
-      dispatch(removeFromCompare(productId));
+      // dispatch(removeFromCompare(productId));
+      setComparedProducts({
+        ...comparedProducts,
+        products: comparedProducts.products.filter(
+          product => product.id !== payload.id
+        ),
+      });
     } else {
       if (count < 4) {
-        dispatch(addToCompare(productId));
+        // dispatch(addToCompare(productId));
+        setComparedProducts({
+          ...comparedProducts,
+          products: [...comparedProducts.products, payload],
+        });
         dispatch(toggleCompareProduct(productId));
       } else {
         alert('Max number of compared products is 4'); // change to final alert modal

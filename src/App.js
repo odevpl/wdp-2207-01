@@ -12,19 +12,29 @@ import ProductList from './components/views/ProductList/ProductList';
 import ProductPage from './components/views/ProductPage/ProductPage';
 import ProductComparator from './components/features/ProductComparator/ProductComparator';
 
+import {
+  RecoilRoot,
+  // atom,
+  // selector,
+  // useRecoilState,
+  // useRecoilValue,
+} from 'recoil';
+
 const App = () => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <MainLayout>
-        <Switch>
-          <Route exact path={'/'} component={Homepage} />
-          <Route exact path={'/shop/:categoryId'} component={ProductList} />
-          <Route exact path={'/product/:productId'} component={ProductPage} />
-        </Switch>
-        <ProductComparator />
-      </MainLayout>
-    </BrowserRouter>
-  </Provider>
+  <RecoilRoot>
+    <Provider store={store}>
+      <BrowserRouter>
+        <MainLayout>
+          <Switch>
+            <Route exact path={'/'} component={Homepage} />
+            <Route exact path={'/shop/:categoryId'} component={ProductList} />
+            <Route exact path={'/product/:productId'} component={ProductPage} />
+          </Switch>
+          <ProductComparator />
+        </MainLayout>
+      </BrowserRouter>
+    </Provider>
+  </RecoilRoot>
 );
 
 export default App;
