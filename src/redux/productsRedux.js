@@ -1,6 +1,10 @@
 /* selectors */
 export const getAll = ({ products }) => products;
 export const getCount = ({ products }) => products.length;
+export const getProductById = ({ products }, id) =>
+  products.find(product => product.id === id);
+export const getProductsGroup = ({ products }, idArr) =>
+  products.filter(product => idArr.indexOf(product.id) !== -1);
 
 /* actions */
 const createActionName = actionName => `app/products/${actionName}`;
