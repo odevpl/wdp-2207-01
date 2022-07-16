@@ -1,11 +1,11 @@
 const initialState = {
-  categories: [
-    { id: 'bed', name: 'Bed' },
-    { id: 'chair', name: 'Chair' },
-    { id: 'sofa', name: 'Sofa' },
-    { id: 'table', name: 'Table' },
-    { id: 'dining', name: 'Dining' },
-  ],
+  // categories: [
+  //   { id: 'bed', name: 'Bed' },
+  //   { id: 'chair', name: 'Chair' },
+  //   { id: 'sofa', name: 'Sofa' },
+  //   { id: 'table', name: 'Table' },
+  //   { id: 'dining', name: 'Dining' },
+  // ],
   products: [
     {
       id: 'aenean-ru-bristique-1',
@@ -28,7 +28,7 @@ const initialState = {
       promo: 'sale',
       newFurniture: true,
       isFavorite: false,
-      isCompared: true,
+      isCompared: false,
       image: 2,
     },
     {

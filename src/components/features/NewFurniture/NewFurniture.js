@@ -7,14 +7,17 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import { WidthContext } from '../../layout/MainLayout/MainLayout';
 
-import { getAll } from '../../../redux/categoriesRedux.js';
+// import { getAll } from '../../../redux/categoriesRedux.js';
 import { getNew } from '../../../redux/productsRedux.js';
 import { useSelector } from 'react-redux';
+import { useRecoilValue } from 'recoil';
+import { categoriesState } from '../../../recoilStore/categoriesState';
 
 const NewFurniture = () => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
-  const categories = useSelector(state => getAll(state));
+  // const categories = useSelector(state => getAll(state));
+  const categories = useRecoilValue(categoriesState);
   const products = useSelector(state => getNew(state));
   const windowWidth = useContext(WidthContext);
 
