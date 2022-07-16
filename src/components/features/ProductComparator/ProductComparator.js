@@ -20,7 +20,11 @@ const ProductComparator = () => {
       <div className={styles.container}>
         <div className={styles.comparedCards}>
           {comparedProducts.map(product => (
-            <ComparedProductCard key={product} id={product} />
+            <ComparedProductCard
+              key={product.id}
+              id={product.id}
+              image={product.image}
+            />
           ))}
         </div>
         <div className={styles.buttonWrapper}>
