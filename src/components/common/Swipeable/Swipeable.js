@@ -32,6 +32,7 @@ const Swipeable = ({ action, children, page, pagesNumber }) => {
 
   return (
     <div
+      className='w-100'
       onTouchStart={e => handleTouchStart(e)}
       onTouchMove={e => handleTouchMove(e)}
       onTouchEnd={() => handleMoveEnd()}
