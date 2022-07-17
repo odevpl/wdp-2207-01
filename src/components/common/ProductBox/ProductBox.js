@@ -35,23 +35,27 @@ const ProductBox = ({
   image,
 }) => {
   const dispatch = useDispatch();
-  const productId = id;
 
   const handleClick = e => {
     e.preventDefault();
-    dispatch(toggleFavoriteProduct(productId));
+    dispatch(toggleFavoriteProduct(id));
   };
   const count = useSelector(state => getCountOfCompared(state));
+
+  const payload = {
+    id: id,
+    image: image,
+  };
 
   const handleCompare = e => {
     e.preventDefault();
     if (isCompared) {
-      dispatch(toggleCompareProduct(productId));
-      dispatch(removeFromCompare(productId));
+      dispatch(toggleCompareProduct(id));
+      dispatch(removeFromCompare(id));
     } else {
       if (count < 4) {
-        dispatch(addToCompare(productId));
-        dispatch(toggleCompareProduct(productId));
+        dispatch(addToCompare(payload));
+        dispatch(toggleCompareProduct(payload.id));
       } else {
         alert('Max number of compared products is 4'); // change to final alert modal
       }
