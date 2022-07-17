@@ -19,7 +19,7 @@ const FeedbackSection = () => {
         <a
           onClick={() => {
             setIsFaded(true);
-            setTimeout(() => setIsFaded(false), 2000);
+            setTimeout(() => setIsFaded(false), 1000);
             setActivePage(i);
           }}
           className={i === activePage ? styles.active : ''}
