@@ -25,7 +25,7 @@ export default function reducer(statePart = [], action) {
     case REMOVE_FROM_COMPARE: {
       return {
         ...statePart,
-        products: statePart.products.filter(product => product !== action.payload),
+        products: statePart.products.filter(product => product.id !== action.payload),
       };
     }
     default:

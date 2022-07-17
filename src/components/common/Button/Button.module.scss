@@ -33,13 +33,6 @@
   line-height: 24px;
   font-weight: 600;
   padding: 10px 30px;
-
-  &:not(.noHover):hover {
-    @include base-hover-animation;
-    color: $color-white !important;
-    background-color: $primary;
-    text-decoration: none;
-  }
 }
 
 .medium {
@@ -65,11 +58,24 @@
   color: $text-color;
   font-size: 13px;
   line-height: 22px;
+}
 
-  &:not(.noHover):hover {
-    @include base-hover-animation;
-    background-color: $button-main;
-    color: $color-white;
+@media (min-width: 992px) {
+  .main {
+    &:not(.noHover):hover {
+      @include base-hover-animation;
+      color: $color-white !important;
+      background-color: $primary;
+      text-decoration: none;
+    }
+  }
+
+  .outline {
+    &:not(.noHover):hover {
+      @include base-hover-animation;
+      background-color: $button-main;
+      color: $color-white;
+    }
   }
 }
 
