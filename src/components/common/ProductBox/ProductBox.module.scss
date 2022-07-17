@@ -149,35 +149,33 @@
   }
 
   @media (min-width: 992px) {
-    .root {
-      .stars {
-        :hover {
-          @include base-hover-animation;
-        }
+    .stars {
+      :hover {
+        @include base-hover-animation;
       }
+    }
 
-      .photo {
-        .buttons {
-          visibility: hidden;
-        }
-        &:hover .buttons {
-          cursor: pointer;
-          visibility: visible;
-        }
+    .photo {
+      .buttons {
+        visibility: hidden;
       }
+      &:hover .buttons {
+        cursor: pointer;
+        visibility: visible;
+      }
+    }
 
-      .actions {
-        .isActive {
-          &:hover {
-            background: $primary;
-            color: $text-color;
-          }
+    .actions {
+      .isActive {
+        &:hover {
+          background: $primary;
+          color: $text-color;
         }
       }
+    }
 
-      &:hover .price {
-        background: $primary;
-      }
+    &:hover .price {
+      background: $primary;
     }
   }
 }
