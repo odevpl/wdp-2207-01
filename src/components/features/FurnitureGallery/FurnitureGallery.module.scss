@@ -2,12 +2,24 @@
 
 .root {
 
+  .fade {
+    animation: changePage 500ms ease-out;
+  }
+
   .galleryContent {
     background-color: $furniture-container-border;
     padding-block: 25px;
     text-align: center;
     position: relative;
     margin-bottom: 5px;
+    height: 400px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    
 
     .buttonLayout {
       position: absolute;
@@ -36,11 +48,11 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: -90%;
+        top: -80%;
         border-radius: 100%;
         aspect-ratio: 1 / 1;
         color: $color-white;
-        padding: 15px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -49,12 +61,11 @@
           margin: 0;
 
           &:first-of-type {
-            margin-top: 15px;
             font-weight: 700;
             font-size: 1.2rem;
           }
 
-          &:last-of-type {
+          &:nth-child(2) {
             text-decoration: line-through;
           }
         }
@@ -106,7 +117,7 @@
     text-align: center;
     border: 1px solid $furniture-container-border; 
 
-    a {
+    button {
       padding: 10px;
       flex-grow: 1;
       position: relative;
@@ -114,6 +125,11 @@
       font-weight: 600;
       color: $text-color;
       text-transform: uppercase;
+      border: 0;
+
+      &:focus {
+        outline: none;
+      }
 
       &:hover, &.active {
         background-color: $furniture-container-border;
@@ -154,6 +170,7 @@
       transform: translate(50px, 75px);
       height: max-content;
       gap: 5px;
+      z-index: 2;
 
       h2 {
         margin: 0;
@@ -195,5 +212,17 @@
 
   .content {
     text-align: center;
+  }
+}
+
+@keyframes changePage {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

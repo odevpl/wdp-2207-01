@@ -85,4 +85,8 @@ a {
   &:hover .additionalData {
     display: block;
   }
+
+  &.active {
+    background: $primary;
+  }
 }

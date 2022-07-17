@@ -9,13 +9,35 @@
 
   .imageContainer {
     aspect-ratio: 1 / 1;
+    border: 0;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+    }
 
     img {
       background-color: $furniture-container-border;
       padding: 5px;
       height: 100%;
       width: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
+  }
+}
+
+.fade {
+  animation: changePage 500ms ease-out;
+}
+
+@keyframes changePage {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

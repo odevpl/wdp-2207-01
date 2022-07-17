@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Swipeable.module.scss';
+import clsx from 'clsx';
 
 const Swipeable = ({ action, children, page, pagesNumber }) => {
   const [moveStart, setMoveStart] = useState(0);
@@ -38,7 +39,7 @@ const Swipeable = ({ action, children, page, pagesNumber }) => {
 
   return (
     <div
-      className={isFaded ? styles.faded : ''}
+      className={clsx('w-100', isFaded && styles.faded)}
       onTouchStart={e => handleTouchStart(e)}
       onTouchMove={e => handleTouchMove(e)}
       onTouchEnd={() => handleMoveEnd()}

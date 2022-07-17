@@ -9,6 +9,7 @@ const Button = ({
   noHover,
   className: propClassName,
   extraInfo,
+  active,
   ...props
 }) => {
   const classes = [];
@@ -25,6 +26,10 @@ const Button = ({
     Comp = 'div';
   }
 
+  if (active) {
+    classes.push(styles.active);
+  }
+
   return (
     <Comp href='#' {...props} className={classes.join(' ')}>
       {children}
@@ -39,6 +44,7 @@ Button.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.string,
   extraInfo: PropTypes.string,
+  active: PropTypes.bool,
 };
 
 export default Button;
