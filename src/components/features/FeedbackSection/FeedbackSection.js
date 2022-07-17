@@ -20,9 +20,11 @@ const FeedbackSection = () => {
           onClick={() => {
             setIsFaded(true);
             setTimeout(() => setIsFaded(false), 1000);
-            setActivePage(i);
+            setTimeout(() => setActivePage(i), 500);
           }}
-          className={i === activePage ? styles.active : ''}
+          className={`${i === activePage ? styles.active : ''} ${styles.dotButton} ${
+            isFaded ? styles.disabled : ''
+          }`}
         >
           feedback {i}
         </a>
