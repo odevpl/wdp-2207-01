@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 const NewFurniture = () => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
+  const [isFaded, setIsFaded] = useState(false);
   const categories = useSelector(state => getAll(state));
   const products = useSelector(state => getNew(state));
   const windowWidth = useContext(WidthContext);
@@ -40,8 +41,14 @@ const NewFurniture = () => {
     dots.push(
       <li>
         <a
-          onClick={() => setActivePage(i)}
-          className={i === activePage && styles.active}
+          onClick={() => {
+            setIsFaded(true);
+            setTimeout(() => setIsFaded(false), 1000);
+            setTimeout(() => setActivePage(i), 500);
+          }}
+          className={`${i === activePage ? styles.active : ''} ${styles.dotButton} ${
+            isFaded ? styles.disabled : ''
+          }`}
         >
           page {i}
         </a>
@@ -64,8 +71,14 @@ const NewFurniture = () => {
                   {categories.map(item => (
                     <li key={item.id}>
                       <a
-                        className={item.id === activeCategory && styles.active}
-                        onClick={() => setActiveCategory(item.id)}
+                        className={`${
+                          item.id === activeCategory ? styles.active : ''
+                        } ${isFaded ? styles.disabled : ''}`}
+                        onClick={() => {
+                          setIsFaded(true);
+                          setTimeout(() => setIsFaded(false), 1000);
+                          setTimeout(() => setActiveCategory(item.id), 500);
+                        }}
                       >
                         {item.name}
                       </a>
@@ -83,7 +96,7 @@ const NewFurniture = () => {
           </div>
         </div>
         <Swipeable action={setActivePage} page={activePage} pagesNumber={pagesCount}>
-          <div className='row'>
+          <div className={`row ${isFaded ? styles.faded : ''}`}>
             {categoryProducts
               .slice(activePage * productsPerPage, (activePage + 1) * productsPerPage)
               .map(item => (
