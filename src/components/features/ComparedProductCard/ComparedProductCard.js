@@ -8,22 +8,20 @@ import { toggleCompareProduct } from '../../../redux/productsRedux';
 import { removeFromCompare } from '../../../redux/comparedProductsRedux';
 import styles from './ComparedProductCard.module.scss';
 
-const ComparedProductCard = props => {
+const ComparedProductCard = ({ id, image }) => {
   const dispatch = useDispatch();
 
   const removeCompare = e => {
     e.preventDefault();
-    dispatch(toggleCompareProduct(props.id));
-    dispatch(removeFromCompare(props.id));
+    dispatch(toggleCompareProduct(id));
+    dispatch(removeFromCompare(id));
   };
 
   return (
     <div className={styles.card}>
       <img
         className={styles.image}
-        src={`https://source.unsplash.com/random/${Math.floor(
-          Math.random() * 100 + 100
-        )}x${Math.floor(Math.random() * 100 + 100)}?random=${Math.random()}`}
+        src={`${process.env.PUBLIC_URL}/images/image${image}.png`}
         alt='product'
       />
       <div className={styles.buttons}>
@@ -38,6 +36,7 @@ const ComparedProductCard = props => {
 ComparedProductCard.propTypes = {
   id: PropTypes.string,
   children: PropTypes.node,
+  image: PropTypes.node,
 };
 
 export default ComparedProductCard;
