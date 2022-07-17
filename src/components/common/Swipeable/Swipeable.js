@@ -27,13 +27,13 @@ const Swipeable = ({ action, children, page, pagesNumber }) => {
   const handleMoveEnd = () => {
     if (moveStart - moveEnd > 100 && page + 1 <= pagesNumber - 1) {
       setIsFaded(true);
+      setTimeout(() => action(page + 1), 500);
       setTimeout(() => setIsFaded(false), 1000);
-      action(page + 1);
     }
     if (moveStart - moveEnd < -100 && page - 1 >= 0) {
       setIsFaded(true);
+      setTimeout(() => action(page - 1), 500);
       setTimeout(() => setIsFaded(false), 1000);
-      action(page - 1);
     }
   };
 
