@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ProductSearch from '../../features/ProductSearch/ProductSearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 import styles from './MenuBar.module.scss';
 
@@ -21,27 +22,31 @@ const MenuBar = ({ children }) => (
         <div className={'col-auto ' + styles.menu}>
           <ul>
             <li>
-              <a href='#' className={styles.active}>
+              {/* <a href='#' className={styles.active}>
                 Home
-              </a>
+              </a> */}
+              <Link to={'/'} className={styles.active}>
+                Home
+              </Link>
             </li>
             <li>
-              <a href='#'>Furniture</a>
+              {/* <a href='#'>Furniture</a> */}
+              <Link to={'/shop/furniture'}>Furniture</Link>
             </li>
             <li>
-              <a href='#'>Chair</a>
+              <Link to={'/shop/chair'}>Chair</Link>
             </li>
             <li>
-              <a href='#'>Table</a>
+              <Link to={'/shop/table'}>Table</Link>
             </li>
             <li>
-              <a href='#'>Sofa</a>
+              <Link to={'/shop/sofa'}>Sofa</Link>
             </li>
             <li>
-              <a href='#'>Bedroom</a>
+              <Link to={'/shop/bedroom'}>Bedroom</Link>
             </li>
             <li>
-              <a href='#'>Blog</a>
+              <Link to={'/blog'}>Blog</Link>
             </li>
           </ul>
         </div>

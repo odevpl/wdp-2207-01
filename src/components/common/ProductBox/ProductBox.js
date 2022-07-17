@@ -21,6 +21,7 @@ import {
   getCountOfCompared,
 } from '../../../redux/comparedProductsRedux';
 import Timer from '../Timer/Timer';
+import { Link } from 'react-router-dom';
 
 const ProductBox = ({
   name,
@@ -66,11 +67,13 @@ const ProductBox = ({
     <div className={styles.root}>
       <div className={styles.photo}>
         {promo && !isFeatured && <div className={styles.sale}>{promo}</div>}
-        <img
-          className={styles.image}
-          src={`${process.env.PUBLIC_URL}/images/image${image}.png`}
-          alt='product'
-        />
+        <Link to={'/product/' + id}>
+          <img
+            className={styles.image}
+            src={`${process.env.PUBLIC_URL}/images/image${image}.png`}
+            alt='product'
+          />
+        </Link>
         {isFeatured && (
           <div className={styles.additionalInfo}>
             <Button variant='medium'>
@@ -90,8 +93,11 @@ const ProductBox = ({
           </div>
         )}
       </div>
+
       <div className={styles.content}>
-        <h5>{name}</h5>
+        <Link to={'/product/' + id} className={styles.link}>
+          <h5>{name}</h5>
+        </Link>
         <div className={styles.stars}>
           {[1, 2, 3, 4, 5].map(i => (
             <a key={i} href='#'>
