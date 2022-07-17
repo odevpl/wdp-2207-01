@@ -6,6 +6,12 @@
   display: flex;
   text-align: center;
   cursor: pointer;
+  padding: 0;
+  border: 0;
+
+  &:focus {
+    outline: none;
+  }
 
   &:hover {
     @include base-hover-animation;
