@@ -24,6 +24,9 @@ const NewFurniture = () => {
 
   useEffect(() => {
     detectScreenWidth(windowWidth);
+    if (pagesCount - 1 < activePage) {
+      setActivePage(pagesCount - 1);
+    }
   }, [windowWidth, activePage, pagesCount]);
 
   const detectScreenWidth = width => {
