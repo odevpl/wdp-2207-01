@@ -18,23 +18,23 @@ const NewFurniture = () => {
   const categories = useSelector(state => getAll(state));
   const products = useSelector(state => getNew(state));
   const windowWidth = useContext(WidthContext);
+  const [productsPerPage, setProductsPerPage] = useState(8);
+  const categoryProducts = products.filter(item => item.category === activeCategory);
+  const pagesCount = Math.ceil(categoryProducts.length / productsPerPage);
 
   useEffect(() => {
     detectScreenWidth(windowWidth);
-  }, [windowWidth]);
+  }, [windowWidth, activePage, pagesCount]);
 
   const detectScreenWidth = width => {
-    width <= 576
-      ? setProductsPerPage(1)
-      : width <= 768
+    width <= 768
       ? setProductsPerPage(2)
+      : width <= 992
+      ? setProductsPerPage(4)
+      : width <= 1200
+      ? setProductsPerPage(6)
       : setProductsPerPage(8);
   };
-
-  const [productsPerPage, setProductsPerPage] = useState(8);
-
-  const categoryProducts = products.filter(item => item.category === activeCategory);
-  const pagesCount = Math.ceil(categoryProducts.length / productsPerPage);
 
   const dots = [];
   for (let i = 0; i < pagesCount; i++) {
@@ -100,7 +100,7 @@ const NewFurniture = () => {
             {categoryProducts
               .slice(activePage * productsPerPage, (activePage + 1) * productsPerPage)
               .map(item => (
-                <div key={item.id} className='col-3'>
+                <div key={item.id} className='col-12 col-sm-6 col-lg-4 col-xl-3'>
                   <ProductBox {...item} />
                 </div>
               ))}
