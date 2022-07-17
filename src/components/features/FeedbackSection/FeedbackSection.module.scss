@@ -7,27 +7,99 @@
   flex-flow: column nowrap;
   margin-bottom: 2rem;
   text-align: center;
-  
+  position: relative;
+
+  .panelBar {
+    margin-bottom: 30px;
+    position: relative;
+
+    :global(.row) > * {
+      border-bottom: 4px solid $furniture-container-border;;
+    };
+
+    .heading {
+      position: relative;
+      width: 100%;
+
+      h3 {
+        color: $primary;
+        text-transform: uppercase;
+        font-size: 20px;
+        line-height: 38px;
+        margin: 0;
+        letter-spacing: 1px;
+        text-align: left;
+      };
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 45px;
+        border-bottom: 4px solid $primary;
+      };
+    };
+
+    .dots {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      ul {
+        margin: 0;
+        padding: 0 0 0 1rem;
+        list-style: none;
+        background-color: $color-white;
+        transform: translateY(15px);
+
+        li {
+          display: inline-block;
+          margin-left: 0.5rem;
+
+          a {
+            display: block;
+            width: 13px;
+            height: 13px;
+            border-radius: 6px;
+            background-color: $dot-bg;
+            font-size: 0;
+
+            &.active,
+            &:hover {
+              background-color: $primary;
+              cursor: pointer;
+            };
+
+            &:hover {
+              @include base-hover-animation;
+            };
+          };
+        };
+      };
+    };
+  };
+
   .feedbackBox {
     padding: 0 60px 30px;
-    
+
     .decoration {
       font-size: 4rem;
       margin: 0;
       line-height: 1;
       font-family: 'BIZ UDGothic', sans-serif;
-    }
-  
+    };
+
     .desc {
       margin: -15px 0 0 0;
       font-size: 14px;
       color: $text-color;
-    }
+    };
 
     .image {
       width: 60px;
       aspect-ratio: 1 / 1;
-    }
+    };
 
     .personDesc {
       padding-left: 10px;
@@ -40,14 +112,27 @@
 
         &:first-of-type {
           font-weight: 600;
-        }
+        };
 
         &:last-of-type {
           font-weight: 300;
-        }
-      }
-    }
-  }
+        };
+      };
+    };
+  };
 
+  .faded {
+    animation: fadeIn 1s;
+  };
 
-}
+  @keyframes fadeIn {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  };
+
+    .disabled{
+    pointer-events: none;
+    cursor: auto;
+  };
+};
