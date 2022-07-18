@@ -2,4 +2,24 @@
 
 .root {
   padding: $base-padding 0;
+
+  .banner {
+    text-align: center;
+    padding: 15px 0;
+  };
+
+  .productList{
+    text-transform: uppercase;
+  };
+
+  .filters {
+    text-transform: uppercase;
+  };
+
+  .brands {
+    text-align: center;
+    padding: 15px 0;
+  }
 }
+
+
