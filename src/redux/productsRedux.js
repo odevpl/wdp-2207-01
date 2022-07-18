@@ -13,7 +13,6 @@ const TOGGLE_COMPARE_PRODUCT = createActionName('TOGGLE_COMPARE_PRODUCT');
 const UPDATE_RATING = createActionName('UPDATE_RATING');
 const DELETE_RATING = createActionName('DELETE_RATING');
 
-
 /* action creators */
 export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
@@ -24,6 +23,7 @@ export const toggleFavoriteProduct = payload => ({
 
 export const toggleCompareProduct = payload => ({
   type: TOGGLE_COMPARE_PRODUCT,
+  payload,
 });
 export const updateRating = payload => ({
   type: UPDATE_RATING,
