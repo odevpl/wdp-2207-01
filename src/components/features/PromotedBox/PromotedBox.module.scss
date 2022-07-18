@@ -3,7 +3,6 @@
 .root {
   padding: 0 0 5rem 0;
   color: $color-white;
-  background-color: #ddd;
   height: 100%;
   box-sizing: border-box;
   width: 100%;
@@ -84,8 +83,8 @@
             font-weight: bolder;
           }
         }
-
       }
+
       .bedWrapper{
         height: 47%;
         position: relative;
@@ -98,7 +97,7 @@
           .bedDescription{
             color:$primary;
             font-size: 20px;
-          }
+          };
           .bedDescription2{
             color: $text-color;
             font-weight: bolder;
@@ -108,5 +107,131 @@
     }
 
   }
-
 }
+
+@media (max-width:576px){
+
+  .root {
+    .wrapper {
+      flex-wrap: wrap;
+
+    .imgLeft {
+      flex: 1 0 100%;
+      font-size: 30px;
+      .shadow {
+        .description {
+          left:0;
+          top: 0;
+        };
+      };
+    };
+
+      .imgRight{
+        flex-grow: 1;
+        justify-content:normal !important;
+        .chairWrapper{
+          margin: 1rem 0;
+            .chairDescriptionWrapper {
+            top:25%;
+            left: 42%;
+            .chairDescription{
+              font-size: 22px;
+            };
+            .chairDescription2{
+              font-size: 15px;
+            };
+            .chairPrice{
+              font-size: 26px;
+            };
+          };
+        };
+
+        .bedWrapper{
+          margin: 1rem 0;
+          .bedDescriptionWrapper{
+            top:5%;
+            left:1%;
+            .bedDescription{
+              font-size: 20px;
+            };
+          };
+        };
+      };
+    };
+  };
+};
+
+@media (min-width: 577px) and (max-width:768px){
+
+  .root {
+    .wrapper {
+      flex-wrap: wrap;
+
+    .imgLeft {
+      flex: 1 0 100%;
+      font-size: 40px;
+      .shadow {
+        .description {
+          left:0;
+          top: 0;
+        };
+      };
+    };
+
+      .imgRight{
+        flex-grow: 1;
+        justify-content:normal !important;
+        .chairWrapper{
+          margin: 1rem 0;
+            .chairDescriptionWrapper {
+            top:25%;
+            left: 34%;
+            .chairDescription{
+              font-size: 22px;
+            };
+            .chairDescription2{
+              font-size: 15px;
+            };
+            .chairPrice{
+              font-size: 26px;
+            };
+          };
+        };
+
+        .bedWrapper{
+          margin: 1rem 0;
+          .bedDescriptionWrapper{
+            top:5%;
+            left:1%;
+            .bedDescription{
+              font-size: 20px;
+            };
+          };
+        };
+      };
+    };
+  };
+};
+
+@media (min-width: 769px) and (max-width:992px){
+
+  .root {
+    .wrapper {
+    .imgRight{
+          .chairWrapper{
+            .chairDescriptionWrapper{
+              .chairDescription{
+                font-size: 20px;
+              };
+            };
+          };
+          .bedWrapper{
+            .bedDescriptionWrapper{
+              top: 17%;
+              left: 1%;
+            };
+          };
+        };
+      };
+    };
+};
