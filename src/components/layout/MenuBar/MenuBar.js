@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './MenuBar.module.scss';
 
-const MenuBar = ({ children }) => (
+const MenuBar = () => (
   <div className={styles.root}>
     <div className='container'>
       <div className='row align-items-center'>
