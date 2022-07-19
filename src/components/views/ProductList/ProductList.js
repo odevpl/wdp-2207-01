@@ -5,10 +5,10 @@ import styles from './ProductList.module.scss';
 const ProductList = () => {
   return (
     <div className={styles.root}>
-      <div className={styles.banner}>
-        <h1>Banner</h1>
-      </div>
       <div className='container'>
+        <div className={styles.banner}>
+          <h1>Banner</h1>
+        </div>
         <div className='row'>
           <div className='col-9'>
             <div className={styles.productList}>
@@ -21,9 +21,9 @@ const ProductList = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles.brands}>
-        <h2>Brands</h2>
+        <div className={styles.brands}>
+          <h2>Brands</h2>
+        </div>
       </div>
     </div>
   );
