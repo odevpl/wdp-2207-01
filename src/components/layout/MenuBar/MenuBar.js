@@ -39,7 +39,7 @@ const MenuBar = ({ children }) => (
             </li>
             <li>
               <NavLink
-                to={'/shop/chair'}
+                to='/shop/chair'
                 className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 Chair
@@ -47,7 +47,7 @@ const MenuBar = ({ children }) => (
             </li>
             <li>
               <NavLink
-                to={'/shop/table'}
+                to='/shop/table'
                 className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 Table
@@ -55,7 +55,7 @@ const MenuBar = ({ children }) => (
             </li>
             <li>
               <NavLink
-                to={'/shop/sofa'}
+                to='/shop/sofa'
                 className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 Sofa
@@ -63,7 +63,7 @@ const MenuBar = ({ children }) => (
             </li>
             <li>
               <NavLink
-                to={'/shop/bedroom'}
+                to='/shop/bedroom'
                 className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 Bedroom
@@ -71,7 +71,7 @@ const MenuBar = ({ children }) => (
             </li>
             <li>
               <NavLink
-                to={'/blog'}
+                to='/blog'
                 className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 Blog
