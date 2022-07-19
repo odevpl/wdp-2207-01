@@ -1,16 +1,16 @@
 @import "../../../styles/settings.scss";
 
 .images {
-  height: 65px;
-  display: flex;
-  gap:5px;
+  display: grid;
+  gap: 5px;
   overflow: hidden;
+  grid-template-columns: repeat(6, 1fr);
   margin-inline: 5px;
 
   .imageContainer {
-    aspect-ratio: 1 / 1;
     border: 0;
     padding: 0;
+    aspect-ratio: 1 / 1;
 
     &:focus {
       outline: none;
@@ -39,5 +39,18 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .images {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+
+@media (max-width: 400px) {
+  .images {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -78,7 +78,7 @@ const FurnitureGallery = () => {
   return (
     <div className={styles.root}>
       <div className='container row m-auto'>
-        <div className='col-6 pl-0'>
+        <div className='col-12 col-md-9 col-lg-6 px-0 pr-md-3'>
           <SectionHeading text={'Furniture gallery'} />
           <div>
             <div className={styles.galleryNav}>
@@ -149,7 +149,7 @@ const FurnitureGallery = () => {
                 </div>
               </div>
             </div>
-            <div className={fade && styles.fade}>
+            <div className={clsx('col-12 px-0', fade && styles.fade)}>
               <Carousel
                 products={productIds}
                 action={setCurrentProduct}
@@ -159,7 +159,7 @@ const FurnitureGallery = () => {
             </div>
           </div>
         </div>
-        <div className={`col-6 ${styles.promoSection}`}>
+        <div className={`col-3 col-lg-6 ${styles.promoSection}`}>
           <div className={styles.promoSectionContent}>
             <h2>
               <span>From </span>$50.80

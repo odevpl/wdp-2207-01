@@ -77,14 +77,16 @@
       color: $color-white;
     }
   }
+
+  a {
+    &:hover .additionalData {
+      display: block;
+    }
+  }
 }
 
 a {
   position: relative; 
-
-  &:hover .additionalData {
-    display: block;
-  }
 
   &.active {
     background: $primary;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import CarouselButton from '../CarouselButton/CarouselButton';
 import styles from './Carousel.module.scss';
 import PropTypes from 'prop-types';
@@ -6,14 +6,24 @@ import { useSelector } from 'react-redux';
 import { getProductsGroup } from '../../../redux/productsRedux';
 import Swipeable from '../Swipeable/Swipeable';
 import clsx from 'clsx';
+import { WidthContext } from '../../layout/MainLayout/MainLayout';
 
 const Carousel = ({ products, action, parentFade, handleParentFade }) => {
   const productsToDisplay = useSelector(state => getProductsGroup(state, products));
-  const productsPerPage = 7;
+  const windowWidth = useContext(WidthContext);
+  const [productsPerPage, setProductsPerPage] = useState(7);
   const pagesNumber = Math.ceil(productsToDisplay.length / productsPerPage);
   const [currentPage, setCurrentPage] = useState(0);
 
   const [fade, setFade] = useState(false);
+
+  const detectScreenWidth = width => {
+    width <= 400
+      ? setProductsPerPage(3)
+      : width <= 1200
+      ? setProductsPerPage(5)
+      : setProductsPerPage(6);
+  };
 
   const handleFade = () => {
     setFade(true);
@@ -25,6 +35,13 @@ const Carousel = ({ products, action, parentFade, handleParentFade }) => {
   useEffect(() => {
     setCurrentPage(0);
   }, [products]);
+
+  useEffect(() => {
+    detectScreenWidth(windowWidth);
+    if (pagesNumber - 1 < currentPage) {
+      setCurrentPage(pagesNumber - 1);
+    }
+  }, [windowWidth, pagesNumber, currentPage]);
 
   return (
     <div className='d-flex flex-row justify-content-between'>
