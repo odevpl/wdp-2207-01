@@ -23,6 +23,7 @@ import {
 } from '../../../redux/comparedProductsRedux';
 import Timer from '../Timer/Timer';
 import { Link } from 'react-router-dom';
+import { addProduct } from '../../../redux/cartRedux';
 
 const ProductBox = ({
   name,
@@ -37,7 +38,6 @@ const ProductBox = ({
   image,
   ownStars,
 }) => {
-
   const dispatch = useDispatch();
 
   const handleClick = e => {
@@ -79,7 +79,7 @@ const ProductBox = ({
         </Link>
         {isFeatured && (
           <div className={styles.additionalInfo}>
-            <Button variant='medium'>
+            <Button onClick={() => dispatch(addProduct(id))} variant='medium'>
               <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
             </Button>
             <div className={styles.timerLayout}>
@@ -138,7 +138,6 @@ const ProductBox = ({
           </Button>
           <Button noHover variant='small'>
             $ {Number.parseFloat(price).toFixed(2)}
-
           </Button>
         </div>
       </div>
