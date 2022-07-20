@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import styles from './ProductBox.module.scss';
@@ -23,6 +23,7 @@ import {
 } from '../../../redux/comparedProductsRedux';
 import Timer from '../Timer/Timer';
 import { Link } from 'react-router-dom';
+import ProductPopup from '../../features/ProductPopup/ProductPopup';
 
 const ProductBox = ({
   name,
@@ -37,7 +38,6 @@ const ProductBox = ({
   image,
   ownStars,
 }) => {
-
   const dispatch = useDispatch();
 
   const handleClick = e => {
@@ -66,6 +66,13 @@ const ProductBox = ({
     }
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = e => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
@@ -89,14 +96,15 @@ const ProductBox = ({
         )}
         {!isFeatured && (
           <div className={styles.buttons}>
-            <Button variant='small'>Quick View</Button>
+            <Button variant='small' onClick={togglePopup}>
+              Quick View
+            </Button>
             <Button variant='small'>
               <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
             </Button>
           </div>
         )}
       </div>
-
       <div className={styles.content}>
         <Link to={'/product/' + id} className={styles.link}>
           <h5>{name}</h5>
@@ -138,10 +146,22 @@ const ProductBox = ({
           </Button>
           <Button noHover variant='small'>
             $ {Number.parseFloat(price).toFixed(2)}
-
           </Button>
         </div>
       </div>
+      {isOpen && (
+        <ProductPopup
+          text={'aaaaaaaaaaaaaaaa'}
+          image={`/images/image${image}.png`}
+          name={name}
+          price={price}
+          id={id}
+          ownStars={ownStars}
+          stars={stars}
+          oldPrice={oldPrice}
+          handleClose={togglePopup}
+        />
+      )}
     </div>
   );
 };
