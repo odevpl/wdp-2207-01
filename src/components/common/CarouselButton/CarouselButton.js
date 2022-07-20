@@ -9,16 +9,21 @@ const CarouselButton = ({
   lastPageIndex,
   parentFade,
   handleParentFade,
+  infinite,
 }) => {
   const changePageUp = pageIdx => {
     if (pageIdx < lastPageIndex) {
       action(currentPage + 1);
+    } else if (infinite) {
+      action(0);
     }
   };
 
   const changePageDown = pageIdx => {
     if (pageIdx > 0) {
       action(currentPage - 1);
+    } else if (infinite) {
+      action(lastPageIndex);
     }
   };
 
@@ -30,7 +35,7 @@ const CarouselButton = ({
           handleParentFade();
           setTimeout(() => {
             changePageDown(currentPage);
-          }, 250);
+          }, 500);
         }}
         className={styles.button}
       >
@@ -45,7 +50,7 @@ const CarouselButton = ({
         handleParentFade();
         setTimeout(() => {
           changePageUp(currentPage);
-        }, 250);
+        }, 500);
       }}
       className={styles.button}
     >
@@ -61,6 +66,7 @@ CarouselButton.propTypes = {
   lastPageIndex: PropTypes.number,
   parentFade: PropTypes.bool,
   handleParentFade: PropTypes.func,
+  infinite: PropTypes.bool,
 };
 
 export default CarouselButton;
