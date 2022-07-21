@@ -10,18 +10,20 @@ import Swipeable from '../../common/Swipeable/Swipeable';
 import CarouselButton from '../../common/CarouselButton/CarouselButton';
 
 const FeaturedBox = () => {
-  const promoImageIdxs = [1, 2];
   const featuredProductIds = useSelector(state => getAll(state));
+  const featuredPages = featuredProductIds.length;
   const [currentFeatured, setCurrentFeatured] = useState(0);
   const currentProduct = useSelector(state =>
     getProductById(state, featuredProductIds[currentFeatured])
   );
-  const lastPromoPageIdx = promoImageIdxs.length - 1;
-  const featuredPages = featuredProductIds.length;
-  const [featuredFade, setFeaturedFade] = useState(false);
-  const [promoFade, setPromoFade] = useState(false);
   const [autoplayStatus, setAutoplayStatus] = useState(true);
-  const [currentPromoImg, setCurrentPromoImg] = useState(0);
+  const [featuredFade, setFeaturedFade] = useState(false);
+
+  const promoImageIdxs = [1, 2];
+  const promoPages = promoImageIdxs.length;
+  const lastPromoPageIdx = promoImageIdxs.length - 1;
+  const [promoFade, setPromoFade] = useState(false);
+  const [currentPromoPage, setCurrentPromoPage] = useState(0);
 
   const changeSlide = useCallback(() => {
     const lastItemIndex = featuredPages - 1;
@@ -113,10 +115,14 @@ const FeaturedBox = () => {
           </div>
 
           <div className={clsx('col-8', styles.carouselLayout)}>
-            <Swipeable>
+            <Swipeable
+              page={currentPromoPage}
+              action={setCurrentPromoPage}
+              pagesNumber={promoPages}
+            >
               <div className={clsx(styles.image, promoFade && styles.fade)}>
                 <img
-                  src={`${process.env.PUBLIC_URL}/images/featureBox${promoImageIdxs[currentPromoImg]}.jpg`}
+                  src={`${process.env.PUBLIC_URL}/images/featureBox${promoImageIdxs[currentPromoPage]}.jpg`}
                   alt='sofa'
                 />
               </div>
@@ -132,22 +138,22 @@ const FeaturedBox = () => {
             </Swipeable>
             <div className={styles.buttons}>
               <CarouselButton
-                action={setCurrentPromoImg}
+                action={setCurrentPromoPage}
                 parentFade={promoFade}
                 handleParentFade={managePromoFade}
                 lastPageIndex={lastPromoPageIdx}
-                currentPage={currentPromoImg}
+                currentPage={currentPromoPage}
                 infinite
                 direction='left'
               />
               <CarouselButton
                 direction='right'
-                action={setCurrentPromoImg}
+                action={setCurrentPromoPage}
                 parentFade={promoFade}
                 handleParentFade={managePromoFade}
                 lastPageIndex={lastPromoPageIdx}
                 infinite
-                currentPage={currentPromoImg}
+                currentPage={currentPromoPage}
               />
             </div>
           </div>
