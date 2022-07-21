@@ -25,8 +25,8 @@ Object.keys(initialState).forEach(item => {
 
 const combinedReducers = combineReducers(reducers);
 
-const persistedState = localStorage.getItem('reduxState')
-  ? JSON.parse(localStorage.getItem('reduxState'))
+const persistedState = localStorage.getItem('stateProducts')
+  ? { ...initialState, products: JSON.parse(localStorage.getItem('stateProducts')) }
   : initialState;
 
 // create store
@@ -37,7 +37,7 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+  localStorage.setItem('stateProducts', JSON.stringify(store.getState().products));
 });
 
 export default store;
