@@ -39,7 +39,7 @@ const Swipeable = ({ action, children, page, pagesNumber }) => {
 
   return (
     <div
-      className={clsx('w-100', styles.container, isFaded && styles.faded)}
+      className={clsx('w-100 h-100', styles.container, isFaded && styles.faded)}
       onTouchStart={e => handleTouchStart(e)}
       onTouchMove={e => handleTouchMove(e)}
       onTouchEnd={() => handleMoveEnd()}

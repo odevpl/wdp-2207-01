@@ -3,6 +3,11 @@
 .root {
   padding-top: 1.5rem;
 
+
+  .fade {
+    animation: $change-page;
+  }
+
   .featuredProductBox {
     margin-bottom: -2rem;
 
@@ -30,13 +35,18 @@
       display: inline-block;
       margin-left: 0.5rem;
 
-      a {
+      button {
         display: block;
         width: 13px;
         height: 13px;
         border-radius: 6px;
         background-color: $dot-bg;
         font-size: 0;
+        border: 0;
+
+        &:focus {
+          outline: none;
+        }
 
         &.active,
         &:hover {
@@ -58,8 +68,7 @@
 
     & .image {
       width: 100%;
-      flex-grow: 1;
-      align-self: stretch;
+      height: 100%;
       
       img {
         width: 100%;
@@ -112,7 +121,7 @@
     & .buttons {
       display: flex;
 
-       & a {
+       & button {
         padding-block: 10px;
         font-size: 1.1rem;
         text-align: center;
@@ -121,3 +130,6 @@
     }
   }
 }
+
+
+

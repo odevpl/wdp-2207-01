@@ -33,3 +33,17 @@ $scale-base: 1.1;
   transform: scale($scale-base);
   transition: $transition;
 }
+
+$change-page: changePage 1s ease-out;
+
+@keyframes changePage {
+  0% {
+    opacity: 1
+  }
+  50% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
