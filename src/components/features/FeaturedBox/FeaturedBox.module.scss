@@ -120,4 +120,83 @@
       }
     }
   }
+
+  @media (max-width: 992px) {
+    .featuredProductBox {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carouselLayout {
+      .promoBanner {
+
+        & h2 {
+          font-size: 2.5rem;
+  
+          & span {
+            font-weight: 300;
+          }
+        }
+  
+        & h3 {
+          font-size: 1.25rem;
+        }
+  
+        & .bannerButton {
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .carouselLayout {
+      .promoBanner {
+        padding-block: 30px 40px;
+
+        & h2 {
+          font-size: 2rem;
+  
+          & span {
+            font-weight: 300;
+          }
+        }
+  
+        & h3 {
+          font-size: 1rem;
+        }
+  
+        & .bannerButton {
+          top: 85%;
+          font-size: 0.8rem;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    .carouselLayout {
+      .promoBanner {
+
+        & h2 {
+          font-size: 1.5rem;
+  
+          & span {
+            font-weight: 300;
+          }
+        }
+  
+        & h3 {
+          font-size: 0.9rem;
+        }
+  
+        & .bannerButton {
+          top: 80%;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
 }
