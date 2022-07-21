@@ -25,11 +25,19 @@ Object.keys(initialState).forEach(item => {
 
 const combinedReducers = combineReducers(reducers);
 
+const persistedState = localStorage.getItem('stateProducts')
+  ? { ...initialState, products: JSON.parse(localStorage.getItem('stateProducts')) }
+  : initialState;
+
 // create store
 const store = createStore(
   combinedReducers,
-  initialState,
+  persistedState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+store.subscribe(() => {
+  localStorage.setItem('stateProducts', JSON.stringify(store.getState().products));
+});
 
 export default store;
