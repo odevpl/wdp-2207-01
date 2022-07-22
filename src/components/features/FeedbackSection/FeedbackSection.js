@@ -4,12 +4,20 @@ import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/feedbackRedux';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import { useState } from 'react';
+import SliderDots from '../../common/SliderDots/SliderDots';
 
 const FeedbackSection = () => {
   const allFeedbacks = useSelector(state => getAll(state));
+  const pagesNumber = allFeedbacks.length;
 
   const [activePage, setActivePage] = useState(0);
   const [isFaded, setIsFaded] = useState(false);
+
+  const handlePageChange = pageToSet => {
+    setIsFaded(true);
+    setTimeout(() => setIsFaded(false), 1000);
+    setTimeout(() => setActivePage(pageToSet), 500);
+  };
 
   const dots = [];
 
@@ -40,8 +48,13 @@ const FeedbackSection = () => {
             <div className={'col-auto ' + styles.heading}>
               <h3>Client feedback</h3>
             </div>
-            <div className={'col-auto ' + styles.dots}>
-              <ul>{dots}</ul>
+            <div className={styles.dotsLayout}>
+              <SliderDots
+                currentPage={activePage}
+                action={handlePageChange}
+                isFaded={isFaded}
+                pagesNumber={pagesNumber}
+              />
             </div>
           </div>
         </div>
