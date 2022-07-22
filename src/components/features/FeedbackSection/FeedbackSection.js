@@ -19,27 +19,6 @@ const FeedbackSection = () => {
     setTimeout(() => setActivePage(pageToSet), 500);
   };
 
-  const dots = [];
-
-  for (let i = 0; i < allFeedbacks.length; i++) {
-    dots.push(
-      <li key={allFeedbacks[i].id}>
-        <a
-          onClick={() => {
-            setIsFaded(true);
-            setTimeout(() => setIsFaded(false), 1000);
-            setTimeout(() => setActivePage(i), 500);
-          }}
-          className={`${i === activePage ? styles.active : ''} ${styles.dotButton} ${
-            isFaded ? styles.disabled : ''
-          }`}
-        >
-          feedback {i}
-        </a>
-      </li>
-    );
-  }
-
   return (
     <div className={styles.root}>
       <div className='container'>
