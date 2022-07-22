@@ -24,6 +24,7 @@ import {
   addToCompare,
   getCountOfCompared,
 } from '../../../redux/comparedProductsRedux';
+import StarRating from '../StarRating/StarRating';
 
 const FurnitureGallery = () => {
   const galleryNavHeadings = ['Featured', 'Top Seller', 'Sale off', 'Top rated'];
@@ -38,6 +39,8 @@ const FurnitureGallery = () => {
     oldPrice,
     isFavorite,
     isCompared,
+    ownStars,
+    stars,
   } = useSelector(state => getProductById(state, currentProduct));
   const dispatch = useDispatch();
 
@@ -136,17 +139,7 @@ const FurnitureGallery = () => {
                   {oldPrice && <p>{oldPrice}.00$</p>}
                 </div>
                 <h5>{name}</h5>
-                <div className={styles.stars}>
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <a key={i} href='#'>
-                      {i <= 2 ? (
-                        <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-                      ) : (
-                        <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-                      )}
-                    </a>
-                  ))}
-                </div>
+                <StarRating id={id} stars={stars} ownStars={ownStars} />
               </div>
             </div>
             <div className={clsx('col-12 px-0', fade && styles.fade)}>
