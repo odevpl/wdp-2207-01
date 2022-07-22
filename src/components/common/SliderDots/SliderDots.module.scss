@@ -1,0 +1,51 @@
+@import "../../../styles/settings.scss";
+
+
+.root {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      margin-left: -0.5rem;
+
+      li {
+        display: inline-block;
+        margin-left: 0.5rem;
+        
+
+        button {
+          display: block;
+          width: 13px;
+          height: 13px;
+          border-radius: 6px;
+          background-color: $dot-bg;
+          font-size: 0;
+          border: 0;
+          cursor: pointer;
+
+          &:focus {
+            outline: none;
+          }
+
+          &.active {
+            background-color: $primary;
+          }
+        }
+      
+    
+  }
+}
+
+@media (min-width: 992px) {
+  .root {
+      
+        li {
+          button {
+            &:hover {
+              @include base-hover-animation;
+              background-color: $primary;
+            }
+          }
+        }
+      
+  }
+}

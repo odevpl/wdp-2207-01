@@ -9,6 +9,7 @@ import {
   faCaretSquareLeft,
   faCaretSquareRight,
 } from '@fortawesome/free-regular-svg-icons';
+import SliderDots from '../../common/SliderDots/SliderDots';
 
 const FeaturedBox = () => {
   const exampleProduct = useSelector(state => getAll(state.products)).slice(0, 1);
@@ -20,17 +21,7 @@ const FeaturedBox = () => {
           <div className={`col-4 ${styles.featuredProductBox}`}>
             <div className={styles.heading}>
               <h5>Hot deals</h5>
-              <ul className={styles.dots}>
-                <li>
-                  <a className={styles.active} href='#'></a>
-                </li>
-                <li>
-                  <a href='#'></a>
-                </li>
-                <li>
-                  <a href='#'></a>
-                </li>
-              </ul>
+              <SliderDots pagesNumber={3} />
             </div>
             <div className={styles.products}>
               {exampleProduct.map((item, idx) => (
