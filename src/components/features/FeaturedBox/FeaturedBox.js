@@ -29,7 +29,7 @@ const FeaturedBox = () => {
               ))}
             </div>
           </div>
-          <div className={`col-8 ${styles.carouselLayout}`}>
+          <div className={`col-12 col-lg-8 ${styles.carouselLayout}`}>
             <div className={styles.image}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/featureBox_sofa.jpg`}
