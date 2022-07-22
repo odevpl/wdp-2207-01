@@ -10,6 +10,7 @@ import { WidthContext } from '../../layout/MainLayout/MainLayout';
 import { getAll } from '../../../redux/categoriesRedux.js';
 import { getNew } from '../../../redux/productsRedux.js';
 import { useSelector } from 'react-redux';
+import SliderDots from '../../common/SliderDots/SliderDots';
 
 const NewFurniture = () => {
   const [activePage, setActivePage] = useState(0);
@@ -39,25 +40,11 @@ const NewFurniture = () => {
       : setProductsPerPage(8);
   };
 
-  const dots = [];
-  for (let i = 0; i < pagesCount; i++) {
-    dots.push(
-      <li key={i}>
-        <a
-          onClick={() => {
-            setIsFaded(true);
-            setTimeout(() => setIsFaded(false), 1000);
-            setTimeout(() => setActivePage(i), 500);
-          }}
-          className={`${i === activePage ? styles.active : ''} ${styles.dotButton} ${
-            isFaded ? styles.disabled : ''
-          }`}
-        >
-          page {i}
-        </a>
-      </li>
-    );
-  }
+  const handlePageChange = pageToSet => {
+    setIsFaded(true);
+    setTimeout(() => setIsFaded(false), 1000);
+    setTimeout(() => setActivePage(pageToSet), 500);
+  };
 
   return (
     <div className={styles.root}>
@@ -89,8 +76,13 @@ const NewFurniture = () => {
                   ))}
                 </ul>
               </div>
-              <div className={'col-auto ' + styles.dots}>
-                <ul>{dots}</ul>
+              <div className={styles.dotsLayout}>
+                <SliderDots
+                  currentPage={activePage}
+                  action={handlePageChange}
+                  isFaded={isFaded}
+                  pagesNumber={pagesCount}
+                />
                 <label className={styles.dropdownButton} htmlFor='categoryDropdown'>
                   <FontAwesomeIcon icon={faBars} />
                 </label>

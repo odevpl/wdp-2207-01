@@ -6,7 +6,7 @@
     position: relative;
     padding-top: 15px;
 
-    :global(.row) > *:not(:where(.dots)) {
+    :global(.row) > *:not(:where(.dotsLayout)) {
       border-bottom: 4px solid $furniture-container-border;
     }
 
@@ -71,42 +71,12 @@
       }
     }
 
-    .dots {
+    .dotsLayout {
       position: absolute;
-      padding: 0;
+      padding: 15px 0 15px 15px;
+      background-color: $color-white;
       right: 0;
       top: 0;
-
-      ul {
-        margin: 0;
-        padding: 0 0 0 1rem;
-        list-style: none;
-        background-color: $color-white;
-        transform: translateY(5px);
-
-        li {
-          display: inline-block;
-          margin-left: 0.5rem;
-
-          a {
-            display: block;
-            width: 13px;
-            height: 13px;
-            border-radius: 6px;
-            background-color: $dot-bg;
-            font-size: 0;
-
-            &.active,
-            &:hover {
-              background-color: $primary;
-            }
-
-            &:hover {
-              @include base-hover-animation;
-            }
-          }
-        }
-      }
     }
   }
 
@@ -120,27 +90,20 @@
     100% { opacity: 1; }
   }
 
-  .dotButton {
-    cursor: pointer;
-  }
-  .disabled{
-    pointer-events: none;
-    cursor: auto;
-  }
-
   .dropdownButton {
-    padding: 6px;
+    padding: 5px;
     display: none;
     font-size: 1.5rem;
+    margin: 0;
 
     &:checked {
       background-color: $primary;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .panelBar {
-      :global(.row) > * {
+      :global(.row) > *:not(.heading) {
         border-bottom: 0;
       }
 
@@ -204,19 +167,15 @@
         }
       }
 
-      .dots {
+      .dotsLayout {
           order: 1;
           display: flex;
           position: static;
-          text-align: center;
           justify-content: space-between;
-          padding: 0;
-          transform: translateY(15px);
-          ul {
-            transform: translateY(0);
-            padding: 0;
-            margin-left: -0.5rem;
-          }
+          padding: 15px 0 0 0;
+          gap: 10px;
+          align-items: center;
+          width: 100%;
       }
     }
 
