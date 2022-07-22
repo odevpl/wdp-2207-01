@@ -5,16 +5,16 @@
   display: flex;
   align-items: center;
   flex-flow: column nowrap;
-  margin-bottom: 2rem;
+  margin-bottom: $space-unit * 7;
   text-align: center;
   position: relative;
 
   .panelBar {
-    margin-bottom: 30px;
+    margin-bottom: $space-unit * 6;
     position: relative;
 
     :global(.row) > * {
-      border-bottom: 4px solid $furniture-container-border;;
+      border-bottom: $container-border-width solid $furniture-container-border;;
     };
 
     .heading {
@@ -22,13 +22,7 @@
       width: 100%;
 
       h3 {
-        color: $primary;
-        text-transform: uppercase;
-        font-size: 20px;
-        line-height: 38px;
-        margin: 0;
-        letter-spacing: 1px;
-        text-align: left;
+        @include section-heading-base;
       };
 
       &::before {
@@ -84,14 +78,14 @@
     padding: 0 60px 30px;
 
     .decoration {
-      font-size: 4rem;
+      font-size: $feedback-decoration-font;
       margin: 0;
-      line-height: 1;
+      line-height: $feedback-decoration-font;
       font-family: 'BIZ UDGothic', sans-serif;
     };
 
     .desc {
-      margin: -15px 0 0 0;
+      margin: -3 * $space-unit 0 0 0;
       font-size: 14px;
       color: $text-color;
     };
@@ -102,7 +96,7 @@
     };
 
     .personDesc {
-      padding-left: 10px;
+      padding-left: $space-unit * 2;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -111,18 +105,18 @@
         margin: 0;
 
         &:first-of-type {
-          font-weight: 600;
+          font-weight: $font-weight-bolder;
         };
 
         &:last-of-type {
-          font-weight: 300;
+          font-weight: $font-weight-bold;
         };
       };
     };
   };
 
   .faded {
-    animation: fadeIn 1s;
+    animation: fadeIn 1s; //i included this variable in some other task - to update after merge
   };
 
   @keyframes fadeIn {
@@ -131,7 +125,7 @@
     100% { opacity: 1; }
   };
 
-    .disabled{
+    .disabled{ //remove when resolving conflicts
     pointer-events: none;
     cursor: auto;
   };
