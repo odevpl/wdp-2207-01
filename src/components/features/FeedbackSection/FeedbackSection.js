@@ -4,6 +4,7 @@ import Swipeable from '../../common/Swipeable/Swipeable';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { feedbackState, feedbackLength } from '../../../recoil/feedbackAtom';
+import { fadeDurationInMs, contentRefreshDelayInMs } from '../../../constants';
 
 const FeedbackSection = () => {
   const feedbacks = useRecoilValue(feedbackState);
@@ -22,8 +23,8 @@ const FeedbackSection = () => {
         <a
           onClick={() => {
             setIsFaded(true);
-            setTimeout(() => setIsFaded(false), 1000);
-            setTimeout(() => setActivePage(i), 500);
+            setTimeout(() => setIsFaded(false), fadeDurationInMs);
+            setTimeout(() => setActivePage(i), contentRefreshDelayInMs);
           }}
           className={`${i === activePage ? styles.active : ''} ${styles.dotButton} ${
             isFaded ? styles.disabled : ''
