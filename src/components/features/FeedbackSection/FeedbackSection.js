@@ -1,21 +1,24 @@
 import React from 'react';
 import styles from './FeedbackSection.module.scss';
-import { useSelector } from 'react-redux';
-import { getAll } from '../../../redux/feedbackRedux';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { feedbackState, feedbackLength } from '../../../recoil/feedbackAtom';
 
 const FeedbackSection = () => {
-  const allFeedbacks = useSelector(state => getAll(state));
+  const feedbacks = useRecoilValue(feedbackState);
+  const feedbacksLength = useRecoilValue(feedbackLength);
 
   const [activePage, setActivePage] = useState(0);
   const [isFaded, setIsFaded] = useState(false);
 
+  const { description, picture, firstName, lastName, role } = feedbacks[activePage];
+
   const dots = [];
 
-  for (let i = 0; i < allFeedbacks.length; i++) {
+  for (let i = 0; i < feedbacksLength; i++) {
     dots.push(
-      <li key={allFeedbacks[i].id}>
+      <li key={i}>
         <a
           onClick={() => {
             setIsFaded(true);
@@ -49,24 +52,24 @@ const FeedbackSection = () => {
         <Swipeable
           action={setActivePage}
           page={activePage}
-          pagesNumber={allFeedbacks.length}
+          pagesNumber={feedbacksLength}
         >
           <div className={`row ${isFaded ? styles.faded : ''}`}>
-            <div key={allFeedbacks[activePage].id} className={styles.feedbackBox}>
+            <div className={styles.feedbackBox}>
               <p className={styles.decoration}>&quot;</p>
-              <p className={styles.desc}>{allFeedbacks[activePage].description}</p>
+              <p className={styles.desc}>{description}</p>
               <div className='mx-auto mt-4'>
                 <div className='d-inline-flex'>
                   <div>
                     <img
                       className={`rounded ${styles.image}`}
-                      src={allFeedbacks[activePage].picture}
+                      src={picture}
                       alt='person'
                     />
                   </div>
                   <div className={styles.personDesc}>
-                    <p>{`${allFeedbacks[activePage].firstName} ${allFeedbacks[activePage].lastName}`}</p>
-                    <p>{allFeedbacks[activePage].role}</p>
+                    <p>{`${firstName} ${lastName}`}</p>
+                    <p>{role}</p>
                   </div>
                 </div>
               </div>
