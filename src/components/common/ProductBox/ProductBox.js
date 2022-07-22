@@ -147,7 +147,6 @@ const ProductBox = ({
       </div>
       {isOpen && (
         <ProductPopup
-          text={'aaaaaaaaaaaaaaaa'}
           image={`/images/image${image}.png`}
           name={name}
           price={price}
