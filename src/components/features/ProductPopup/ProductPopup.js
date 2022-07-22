@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ProductPopup.module.scss';
 import StarRating from '../StarRating/StarRating';
 
-const ProductPopup = props => {
+const ProductPopup = ({ image, name, id, ownStars, stars, price, handleClose }) => {
   return (
     <div className={styles.popup_Box}>
       <div className={styles.box}>
@@ -12,28 +12,22 @@ const ProductPopup = props => {
             <div className={styles.productImage}>
               <img
                 className={styles.image}
-                src={`${process.env.PUBLIC_URL}` + props.image}
+                src={`${process.env.PUBLIC_URL}` + image}
                 alt='ProductImage'
               />
             </div>
           </div>
           <div className='col-6'>
             <div className={styles.content}>
-              <h5>{props.name}</h5>
+              <h5>{name}</h5>
               <div className={styles.stars}>
-                <StarRating
-                  id={props.id}
-                  ownStars={props.ownStars}
-                  stars={props.stars}
-                />
+                <StarRating id={id} ownStars={ownStars} stars={stars} />
               </div>
             </div>
-            <div className={styles.price}>
-              $ {Number.parseFloat(props.price).toFixed(2)}
-            </div>
+            <div className={styles.price}>$ {Number.parseFloat(price).toFixed(2)}</div>
           </div>
         </div>
-        <span className={styles.close_icon} onClick={props.handleClose}>
+        <span className={styles.close_icon} onClick={handleClose}>
           x
         </span>
       </div>
